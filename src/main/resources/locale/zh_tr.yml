@@ -1,0 +1,132 @@
+Label - commands: 指令
+Label - page: 頁
+Label - contents: 內容
+Label - letter: 信
+Label - letter and quill: 信與筆墨
+Label - dyed letter and quill: '%color% 信與筆墨'
+Label - fancy letter and quill: 華麗的 %color% 信與筆墨
+Label - postbox: 郵筒
+Label - mailbox: 郵箱
+Label - dyed mailbox: '%color% 郵箱'
+Label - notifications: 提醒
+Label - package: 包裹
+Label - crate: 板條箱
+Label - wooden crate: '%wood% 板條箱'
+Label - fancy crate: 華麗的 %color% 板條箱
+Label - chest: 箱子
+Label - wooden chest: '%wood% 箱子'
+Label - fancy chest: 華麗的 %color% 箱子
+Label - gift: 禮盒
+Label - dyed gift: '%color% 禮盒'
+Label - from: 來自
+Label - world: 世界
+Label - box locations: 郵箱位置
+Label - tracking number: 追蹤編號
+Label - postbox types: 郵筒樣式
+Label - box types: 郵箱樣式
+Label - letter types: 信件樣式
+Label - pack types: 包裹樣式
+Label - enabled: 開啟
+Label - disabled: 關閉
+Label - server: 伺服器
+Label - warehouse: 倉庫
+Label - warehouse entries: 倉庫項目
+Label - item: 物品
+Label - style: 樣式
+Label - expired: 編號已過期
+Text - intro: '添加了郵箱，信件以及包裹。 \nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - boxes: 顯示所有郵箱位置
+Text - breakboxes: 拆毀所有郵箱
+Text - mail: 打開虛擬郵箱
+Text - sento: 寄件給玩家
+Text - summon item: 生成物品
+Text - warehouse send: 將倉庫項目發送給玩家
+Text - warehouse save: 保存物品至倉庫
+Text - warehouse rename: 重命名倉庫項目
+Text - warehouse edit: 編輯倉庫項目
+Text - warehouse list: 展示所有倉庫項目
+Text - warehouse delete: 刪除倉庫項目
+Const - unknown: Unknown
+Arg - player: player
+Arg - type: type
+Arg - amount: amount
+Arg - mail: mail
+Arg - name: name
+Arg - from: from
+Arg - to: to
+Success - sent: 郵件已發送至 %player%
+Seccess - sent short: 郵件已發送！
+Success - gift: '%amount% 個物品已發送至 %player%'
+Success - break: 郵箱已拆毀
+Success - warehouse create: 專案添加成功
+Success - warehouse rename: 專案命名成功
+Success - warehouse delete: 項目已刪除
+Warn - no permission: 您沒有許可權使用這條命令。
+Warn - no permission block: 您沒有許可權使用這個方塊。
+Warn - not mail: 您手上的不是郵件。
+Warn - box limit: 您不可以再放置郵箱了。
+Warn - player not found: 玩家 %player% 未找到。
+Warn - unknown type: 未知種類。
+Warn - expired: 郵件的追蹤編號已過期
+Warn - empty seal: 包裹是空的！
+Warn - fractal seal: 包裹里不能塞入另一個包裹
+Warn - blacklist world: 這個世界不能使用郵箱哦。
+Warn - console not supported: 只能由玩家執行哦。
+Warn - entry open: '%entry% 正在被 %player% 編輯中'
+Warn - cooling: 請稍等片刻 (%seconds%秒)
+Warn - cooling short: 請等待 (%seconds%秒)
+Warn - invalid mail: 不正確的郵件
+Info - format: 格式為 %format%
+Info - box: 郵箱 ~ %player% ~
+Info - mail: '&e[郵箱] &7您有 &6%amount% &7份郵件'
+Info - receive: '&e[郵箱] &7收到了來自 %player% 的郵件'
+Info - receive multi: '&e[郵箱] &7您收到了 &6%amount% &7份新郵件'
+Console - plugin detect: '檢測到了 %plugin%'
+Misc - item overflow: 等 %amount% 個...
+Misc - date: yyy/MM/dd
+Misc - special characters: 名稱只能包括 a-z, A-Z, 0-9, _, 以及 -
+Misc - too long: 請將名稱縮短至20個字元以內
+Wood - oak: 橡木
+Wood - spruce: 雲杉
+Wood - birch: 白樺
+Wood - jungle: 從林木
+Wood - acacia: 金合歡
+Wood - dark oak: 深色橡木
+Wood - crimson: 緋紅
+Wood - warped: 詭異
+Color - black: 黑色
+Color - red: 紅色
+Color - green: 綠色
+Color - brown: 棕色
+Color - blue: 藍色
+Color - purple: 紫色
+Color - cyan: 青色
+Color - light gray: 淺灰色
+Color - gray: 灰色
+Color - pink: 粉色
+Color - lime: 淺綠色
+Color - yellow: 黃色
+Color - light blue: 淺藍色
+Color - magenta: 品紅色
+Color - orange: 橙色
+Color - white: 白色
+Lore ID - empty package: Empty
+Lore ID - sealed package: Sealed
+Lore ID - global box: Global
+Icon - back: 返回
+Icon - close: 關閉
+Icon - seal: 打包
+Icon - seal lore: » 點擊拆封
+Icon - collect: 收取全部
+Icon - scroll up: 向上滾動
+Icon - scroll down: 向下滾動
+Icon - destroy: 焚燒站
+Icon - on join: 加入遊戲時
+Icon - on receive: 收到郵件時
+Icon - player mailbox: '%player% 的郵箱'
+Icon - insert mail: 投入郵件
+Icon - to: 收件人：
+Icon - send mail: 發送
+Icon - backspace: ««退格
+Icon - send lore: » 點擊發送
+Icon - apply: 應用變更

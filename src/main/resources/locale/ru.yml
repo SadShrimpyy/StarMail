@@ -1,0 +1,151 @@
+# Russian Language File
+
+Label - commands: Команды
+Label - page: Страница
+Label - contents: Содержание
+Label - letter: Письмо
+Label - letter and quill: Письмо и перо
+Label - dyed letter and quill: '%color% Письмо и перо'
+Label - fancy letter and quill: необычный %color% Письмо и перо
+Label - postbox: Почтовый ящик
+Label - mailbox: Почтовый ящик
+Label - dyed mailbox: '%color% Почтовый ящик'
+Label - notifications: Notifications
+Label - package: Package
+Label - crate: упаковочная клеть
+Label - wooden crate: '%wood% упаковочная клеть'
+Label - fancy crate: Необычный %color% упаковочная клеть
+Label - chest: Сундук
+Label - wooden chest: '%wood% Сундук'
+Label - fancy chest: Необычный %color% Сундук
+Label - gift: Подарок
+Label - dyed gift: '%color% Подарок'
+Label - from: От
+Label - world: Мир
+Label - box locations: Местоположение почтовых ящиков
+Label - tracking number: Трэк-номер
+Label - postbox types: Типы Почтовый ящик
+Label - box types: Типы Почтовый ящик
+Label - letter types: Типы писем
+Label - pack types: Типы пакетов
+Label - enabled: Включено
+Label - disabled: нетрудоспособный
+Label - server: Сервер
+Label - warehouse: Складской
+Label - warehouse entries: Складские Записи
+Label - item: Предметы
+Label - style: Стиль
+Label - expired: Трэк-номер Истек
+
+Text - intro: 'Добавляет почтовые ящики, письма и пакеты.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - boxes: список местоположения всех почтовых ящиков
+Text - breakboxes: конфисковать все почтовые ящики
+Text - mail: открыть виртуальный pochtovyy yashchik
+Text - sento: отправить почту игроку
+Text - summon item: давать предметы игроку
+Text - warehouse send: отправить письмо игроку
+Text - warehouse save: сохранить товар в руке на склад
+Text - warehouse rename: переименовать складскую запись
+Text - warehouse edit: редактировать складскую запись
+Text - warehouse list: перечислить все складские записи
+Text - warehouse delete: удалить складскую запись
+
+Const - unknown: Неизвестно
+
+Arg - player: игрок
+Arg - type: тип
+Arg - amount: количество
+Arg - mail: почта
+Arg - name: название
+Arg - from: с
+Arg - to: в
+
+Success - sent: Посылка отправлена %player%
+Success - sent short: почта отправлена
+Success - gift: '%amount% предметов отправлено %player%'
+Success - break: Почтовые ящики конфискованы
+Success - warehouse create: Запись добавлена
+Success - warehouse rename: Запись переименована
+Success - warehouse delete: Запись удалена
+
+Warn - no permission: Недостаточно прав для использования команды.
+Warn - no permission block: У вас нет разрешения на использование этого блока.
+Warn - not mail: У Вас нет почтового ящика.
+Warn - box limit: Вы не можете установить ещё почтовых ящиков.
+Warn - player not found: Игрок %player% не найден.
+Warn - unknown type: Неизвестный тип.
+Warn - expired: Трэк-номер истёк.
+Warn - empty seal: Запечатанная посылка не может быть пустой.
+Warn - fractal seal: Запечатанная посылка не может содержать еще одну посылку.
+Warn - blacklist world: Почтовые ящики не разрешены в этом мире.
+Warn - console not supported: Эту команду нельзя использовать с консоли.
+Warn - entry open: '%entry% редактирует %player%'
+Warn - cooling: Подождите, прежде чем отправлять другой товар. (%seconds%c)
+Warn - cooling short: Подождите (%seconds%c)
+Warn - invalid mail: Неверная почта
+
+Info - format: "Используйте: %format%"
+Info - box: Почтовый ящик ~ %player% ~
+Info - mail: '&e[Почтовый ящик] &7У Вас &6%amount% &7предметов в почтовом ящке.'
+Info - receive: '&e[Почтовый ящик] &7Письмо от %player%.'
+Info - receive multi: '&e[Почтовый ящик] &7Вы получили &6%amount% &7новых предмета.'
+
+Console - plugin detect: '%plugin% обнаружен'
+
+Misc - item overflow: и ещё %amount% ...
+Misc - date: MM/dd/yyy
+Misc - special characters: Имена должны состоять только из букв a-z, A-Z, 0-9, _ и -
+Misc - too long: Имена должны содержать не более 20 символов.
+
+Wood - oak: Дубовый
+Wood - spruce: Еловый
+Wood - birch: Березовый
+Wood - jungle: Сундук
+Wood - acacia: Сундук
+Wood - dark oak: Темный Дубовый
+Wood - crimson: малиновый
+Wood - warped: искаженный
+
+Color - black: Черный
+Color - red: Красный
+Color - green: Зеленый
+Color - brown: Коричневый
+Color - blue: Синий
+Color - purple: Фиолетовый
+Color - cyan: Голубой
+Color - light gray: Светло-серый
+Color - gray: Серый
+Color - pink: pозовый
+Color - lime: Лайм
+Color - yellow: желтый
+Color - light blue: Светло-синий
+Color - magenta: фуксин
+Color - orange: оранжевый
+Color - white: белый
+
+Lore ID - empty package: Пустая посылка
+Lore ID - sealed package: Запечатанная посылка
+Lore ID - global box: Глобальный
+
+Icon - back: Назад
+Icon - close: Закрыть
+Icon - seal: Запечатать
+Icon - seal lore: » Нажмите, чтобы открыть посылку
+Icon - collect: Собрать всё
+Icon - scroll up: Пролистать вверх
+Icon - scroll down: Пролистать вниз
+Icon - destroy: Уничтожить предмет
+Icon - on join: при присоединении
+Icon - on receive: при получении почты
+Icon - player mailbox: "Почтовый ящик %player%"
+Icon - insert mail: Вставить Почту
+Icon - to: 'к: '
+Icon - send mail: Отправить Почту
+Icon - backspace: Backspace
+Icon - send lore: » Нажмите, чтобы отправить письмо
+Icon - apply: Применять изменения
+
+
+
+
+

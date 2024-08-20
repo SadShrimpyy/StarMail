@@ -1,0 +1,146 @@
+# Polish Language File
+
+Label - commands: Komendy
+Label - page: Strona
+Label - contents: Zawartość
+Label - letter: Listy
+Label - letter and quill: List z piórem
+Label - dyed letter and quill: List z piórem %color%
+Label - fancy letter and quill: Wyszukany List z Piórem %color%
+Label - postbox: Skrzynka pocztowa
+Label - mailbox: Skrzynka odbiorcza
+Label - dyed mailbox: '%color% Skrzynka odbiorcza'
+Label - notifications: Powiadomienia
+Label - package: Przesyłka
+Label - crate: Skrzynka
+Label - wooden crate: Paczka zrobiona z %wood%
+Label - fancy crate: Wyszukana paczka %color%
+Label - chest: Skrzynia
+Label - wooden chest: '%wood% Skrzynia'
+Label - fancy chest: Fancy %color% Skrzynia
+Label - gift: Prezent
+Label - dyed gift: '%color% Prezent'
+Label - from: Od
+Label - world: Świat
+Label - box locations: Lokacje skrzynek odbiorczych
+Label - tracking number: Numer śledzący przesyłkę
+Label - postbox types: Typy skrzynek pocztowych
+Label - box types: Typy skrzynek odbiorczych
+Label - letter types: Typy listów
+Label - pack types: Typy paczek
+Label - enabled: Włączone
+Label - disabled: Wyłączone
+Label - server: Serwer
+Label - warehouse: Magazyn
+Label - warehouse entries: Dane o magazynie
+Label - item: Item
+Label - style: Style
+Label - expired: TrackingNo Expired
+
+Text - intro: 'Dodaje skrzynki pocztowe, listy i paczki.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - boxes: Lista lokacji skrzynek odbiorczych
+Text - breakboxes: Zniszcz wszystkie skrzynki odbiorcze
+Text - mail: Otwórz wirtualną skrzynkę odbiorczą
+Text - sento: wyślij mail do gracza
+Text - summon item: przekaż przedmioty graczowi
+Text - warehouse send: Wyślij przesyłkę do osoby
+Text - warehouse save: Zapisz przedmiot w magazynie
+Text - warehouse rename: Zmień nazwę wpisu do magazynu
+Text - warehouse edit: Edytu wpis do magazynu
+Text - warehouse list: Pokaż wszystkie wpisy do magazynu
+Text - warehouse delete: Usuń wpis z magazynu
+
+Const - unknown: Nieznany
+
+Arg - player: osoba
+Arg - type: typ
+Arg - amount: ilość
+Arg - mail: mail
+Arg - name: nazwa
+Arg - from: od
+Arg - to: do
+
+Success - sent: Mail wysłany do %player%
+Seccess - sent short: Mail wysłany!
+Success - gift: Wysłano %amount% przedmiotów do %player%
+Success - break: Zniszczono skrzynki odbiorcze
+Success - warehouse create: wpis dodany
+Success - warehouse rename: nazwa wpisu zmieniona
+Success - warehouse delete: wpis usunięty
+
+Warn - no permission: Nie masz permisji do użycia tej komendy.
+Warn - no permission block: Nie masz uprawnień do korzystania z tego bloku.
+Warn - not mail: Nie trzymasz w dłoni listu/paczki.
+Warn - box limit: Nie możesz zarejestrować więcej skrzynek odbiorczych.
+Warn - player not found: Osoba %player% nie znaleziona.
+Warn - unknown type: Nie rozpoznano typu.
+Warn - expired: Numer śledzenia przesyłki wygasł.
+Warn - empty seal: Zapieczętowane paczki nie mogą być puste.
+Warn - fractal seal: Zapieczętowane paczki nie mogą zawierać w sobie innych paczek.
+Warn - blacklist world: Skrzynki odbiorcze nie są dozwolne w tym świecie.
+Warn - console not supported: Tego polecenia nie można użyć z konsoli.
+Warn - entry open: '%entry% jest edytowany przez %player%'
+Warn - cooling: Zaczekaj przed wysłaniem kolejnego przedmiotu. (%seconds%s)
+Warn - cooling short: Proszę czekać (%seconds%s)
+Warn - invalid mail: Nieprawidłowa poczta
+
+Info - format: Prawidłowy format %format%
+Info - box: Skrzynka odbiorcza ~ %player% ~
+Info - mail: '&e[Skrzynka odbiorcza] &7Masz &6%amount% &7przedmiot(ów) w swojej skrzynce odbiorczej.'
+Info - receive: '&e[Skrzynka odbiorcza] &7Dostałeś przesyłkę od %player%.'
+Info - receive multi: '&e[Skrzynka odbiorcza] &7Otrzymałeś &6%amount% &7nowe przedmioty.'
+
+Console - plugin detect: Wykryto plugin %plugin%
+
+Misc - item overflow: i %amount% więcej...
+Misc - date: dd/MM/yyy
+Misc - special characters: Nazwa powinna zawierać tylko a-z, A-Z, 0-9, _, i -
+Misc - too long: Nazwy muszą miec 20 lub mniej znaków
+
+Wood - oak: Dąb
+Wood - spruce: Świerk
+Wood - birch: brzoza
+Wood - jungle: Dżunglowe
+Wood - acacia: Drzewo akacji
+Wood - dark oak: Ciemny dąb
+Wood - crimson: Karmazynowy
+Wood - warped: Spaczony
+
+Color - black: Czarny
+Color - red: Czerwony
+Color - green: Zielony
+Color - brown: Brązowy
+Color - blue: Niebieski
+Color - purple: Fioletowy
+Color - cyan: Turkusowy
+Color - light gray: Jasny Szary
+Color - gray: Szary
+Color - pink: Różowy
+Color - lime: Limonkowy
+Color - yellow: Zółty
+Color - light blue: Jasny Niebieski
+Color - magenta: Magenta
+Color - orange: Pomarańczowy
+Color - white: Biały
+
+Lore ID - empty package: Pusty
+Lore ID - sealed package: Zapieczętowane
+Lore ID - global box: Publiczny
+
+Icon - back: Wróć
+Icon - close: Zamknij
+Icon - seal: Zapieczętuj
+Icon - seal lore: » Kliknij by otworzyć paczkę
+Icon - collect: Zbierz wszystko
+Icon - scroll up: Na górę
+Icon - scroll down: Na dół
+Icon - destroy: Zniszcz przedmiot
+Icon - on join: po dołączeniu
+Icon - on receive: po otrzymaniu przesyłki
+Icon - player mailbox: Skrzynka odbiorcza %player%
+Icon - insert mail: Wsadź przesyłkę
+Icon - to: 'Do: '
+Icon - send mail: Wyślij przesyłkę
+Icon - backspace: Cofnij
+Icon - send lore: » Kliknij by wysłać przesyłkę
+Icon - apply: Apply changes

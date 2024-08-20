@@ -1,0 +1,14 @@
+# StarMail Configuration
+Language file: en
+Default Max Mailbox: 1
+# set days to -1 for no expiration
+Mail Expiration Days: 30
+Package Expiration Days: 30
+Inactive User Expiration Days: 45
+Mailbox World Blacklist:
+  - example-world
+on Join Notification Delay (Ticks): 3
+Require Block Permission: false
+Show Crate Straps: true
+Default Send Cooldown (Seconds): 0
+Instant Mail Send: false

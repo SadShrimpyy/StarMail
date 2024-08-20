@@ -1,0 +1,147 @@
+# French Language File
+
+Label - commands: Commandes
+Label - page: Page
+Label - contents: Contenu
+Label - letter: Lettre
+Label - letter and quill: Lettre et Plume
+Label - dyed letter and quill: Lettre %color% et Plume
+Label - fancy letter and quill: Lettre %color% Fantaisie et Plume
+Label - postbox: Boîte Postale
+Label - mailbox: Boite aux Lettres
+Label - dyed mailbox: Mailbox %color%
+Label - notifications: Notifications
+Label - package: Paquet
+Label - crate: Cageot
+Label - wooden crate: Cageot en %wood%
+Label - fancy crate: Cageot %color% Fantaisie
+Label - chest: Coffre
+Label - wooden chest: Coffre en %wood%
+Label - fancy chest: Coffre %color% Fantaisie
+Label - gift: Cadeau
+Label - dyed gift: Cadeau %color%
+Label - from: Expéditeur
+Label - world: Monde
+Label - box locations: Positions des Boites aux Lettres
+Label - tracking number: N° De Suivi
+Label - postbox types: Types de Boîte Postale
+Label - box types: Types de Boite aux Lettres
+Label - letter types: Types de Lettres
+Label - pack types: Type D'emballage
+Label - enabled: Activée
+Label - disabled: Désactivé
+Label - server: Serveur
+Label - warehouse: Entrepôt
+Label - warehouse entries: Entrées d'entrepôt
+Label - item: Article
+Label - style: Style
+Label - expired: N° De Suivi Expiré
+
+Text - intro: 'Ajoute des boîtes aux lettres, des lettres et des packages.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - boxes: lister toutes les positions de Boites aux Lettres
+Text - breakboxes: Retirer toutes les Boites aux Lettres
+Text - mail: Ouvrir la Boite aux Lettres Virtuelle
+Text - sento: Envoyer un courrier au joueur
+Text - summon item: donner des objets au joueur
+Text - warehouse send: envoyer un courrier au joueur
+Text - warehouse save: enregistrer l'article en main dans l'entrepôt
+Text - warehouse rename: renommer l'entrée d'entrepôt
+Text - warehouse edit: modifier l'entrée d'entrepôt
+Text - warehouse list: lister toutes les entrées d'entrepôt
+Text - warehouse delete: supprimer l'entrée d'entrepôt
+
+Const - unknown: Inconnu
+
+Arg - player: Joueur
+Arg - type: type
+Arg - amount: quantité
+Arg - mail: courrier
+Arg - name: Nom
+Arg - from: de
+Arg - to: en
+
+Success - sent: Courrier envoyé à %player%
+Success - sent short: Courrier Envoyé!
+Success - gift: '%amount% objets envoyés à %player%'
+Success - break: Boite aux Lettre détruire
+Success - warehouse create: Entrée ajoutée
+Success - warehouse rename: Entrée renommée
+Success - warehouse delete: Entrée supprimée
+
+Warn - no permission: Vous n'avez pas le droit d'utiliser cette commande.
+Warn - no permission block: Vous n'êtes pas autorisé à utiliser ce bloc.
+Warn - not mail: Vous n'avez pas de courrier.
+Warn - box limit: Vous ne pouvez pas placer plus de Boites aux Lettres.
+Warn - player not found: Le joueur %player% n'existe pas.
+Warn - unknown type: Type innconnu.
+Warn - expired: Numéro de suiviré expiré.
+Warn - empty seal: Un Paquet Scellé ne peut être vide.
+Warn - fractal seal: Un Paquet Scellé ne peut pas contenir d'autres paquets.
+Warn - blacklist world: Les boîtes aux lettres ne sont pas autorisées dans ce monde.
+Warn - console not supported: Cette commande ne peut pas être utilisée depuis la console.
+Warn - entry open: '%entry% est en cours de modification par %player%'
+Warn - cooling: Veuillez patienter avant d'envoyer un autre article. (%seconds%s)
+Warn - cooling short: Attendez (%seconds%s)
+Warn - invalid mail: Courriel invalide
+
+Info - format: Faîtes %format%
+Info - box: Boite aux Lettres ~ %player% ~
+Info - mail: '&e[Boite aux Lettres] &7Vous avez &6%amount% &7objets dans votre Boite aux Lettres.'
+Info - receive: '&e[Boite aux Lettres] &7Vous avez reçu un mail de %player%'
+Info - receive multi: '&e[Boite aux Lettres] &7Vous avez &6%amount% &7nouveaux objets.'
+
+Console - plugin detect: '%plugin% détecté'
+
+Misc - item overflow: et %amount% de plus...
+Misc - date: dd/MM/yyy
+Misc - special characters: Les noms doivent être composés uniquement de a-z, A-Z, 0-9, _ et -
+Misc - too long: Les noms doivent contenir 20 caractères ou moins
+
+Wood - oak: Chêne
+Wood - spruce: Épicéa
+Wood - birch: Bouleau
+Wood - jungle: Jungle
+Wood - acacia: Acacia
+Wood - dark oak: Chêne Foncé
+Wood - crimson: Cramoisie
+Wood - warped: Déformée
+
+Color - black: Noir
+Color - red: Rouge
+Color - green: Vert
+Color - brown: Brown
+Color - blue: Bleu
+Color - purple: Violette
+Color - cyan: Cyan
+Color - light gray: Gris Clair
+Color - gray: Gris
+Color - pink: rose
+Color - lime: Citron Vert
+Color - yellow: Jaune
+Color - light blue: Bleu Clair
+Color - magenta: Magenta
+Color - orange: Orange
+Color - white: Blanche
+
+Lore ID - empty package: Vide
+Lore ID - sealed package: Scellé
+Lore ID - global box: Global
+
+Icon - back: Retour
+Icon - close: Fermer
+Icon - seal: Sceller
+Icon - seal lore: » Cliquez pour ouvrir le paquet
+Icon - collect: Tout collecter
+Icon - scroll up: Défiler vers le Haut
+Icon - scroll down: Défiler vers le Bas
+Icon - destroy: Détruire Objet
+Icon - on join: lors de l'adhésion
+Icon - on receive: sur réception du courrier
+Icon - player mailbox: Boîte aux lettres de %player%
+Icon - insert mail: Insérer un Courrier
+Icon - to: 'À: '
+Icon - send mail: Envoyer un Courrier
+Icon - backspace: Arrière
+Icon - send lore: » Cliquez pour envoyer un courrier
+Icon - apply: Appliquer les modifications
+

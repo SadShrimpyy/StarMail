@@ -1,0 +1,146 @@
+# English Language File
+
+Label - commands: Commands
+Label - page: Page
+Label - contents: Contents
+Label - letter: Letter
+Label - letter and quill: Letter and Quill
+Label - dyed letter and quill: '%color% Letter and Quill'
+Label - fancy letter and quill: Fancy %color% Letter and Quill
+Label - postbox: Postbox
+Label - mailbox: Mailbox
+Label - dyed mailbox: '%color% Mailbox'
+Label - notifications: Notifications
+Label - package: Package
+Label - crate: Crate
+Label - wooden crate: '%wood% Crate'
+Label - fancy crate: Fancy %color% Crate
+Label - chest: Chest
+Label - wooden chest: '%wood% Chest'
+Label - fancy chest: Fancy %color% Chest
+Label - gift: Gift
+Label - dyed gift: '%color% Gift'
+Label - from: From
+Label - world: World
+Label - box locations: Mailbox Locaitons
+Label - tracking number: TrackingNo
+Label - postbox types: Postbox Types
+Label - box types: Box Types
+Label - letter types: Letter Types
+Label - pack types: Package Types
+Label - enabled: Enabled
+Label - disabled: Disabled
+Label - server: Server
+Label - warehouse: Warehouse
+Label - warehouse entries: Warehouse Entries
+Label - item: Item
+Label - style: Style
+Label - expired: TrackingNo Expired
+
+Text - intro: 'Adds mailboxes, letters, and packages.\nRead more on the wiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - boxes: list all mailbox locations
+Text - breakboxes: break all mailboxes
+Text - mail: open virtual mailbox
+Text - sento: send mail to player
+Text - summon item: give items to player
+Text - warehouse send: send mail to player
+Text - warehouse save: save hand item to warehouse
+Text - warehouse rename: rename warehouse entry
+Text - warehouse edit: edit warehouse entry
+Text - warehouse list: list all warehouse entries
+Text - warehouse delete: delete warehouse entry
+
+Const - unknown: Unknown
+
+Arg - player: player
+Arg - type: type
+Arg - amount: amount
+Arg - mail: mail
+Arg - name: name
+Arg - from: from
+Arg - to: to
+
+Success - sent: Mail sent to %player%
+Seccess - sent short: Mail Sent!
+Success - gift: '%amount% items sent to %player%'
+Success - break: Mailboxes broken
+Success - warehouse create: Entry added
+Success - warehouse rename: Entry renamed
+Success - warehouse delete: Entry deleted
+
+Warn - no permission: You do not have permission for this command.
+Warn - no permission block: You do not have permission to use this block.
+Warn - not mail: You are not holding any mail.
+Warn - box limit: You can not place any more mailboxes.
+Warn - player not found: Player %player% not found.
+Warn - unknown type: Unknown type.
+Warn - expired: Tracking number is expired.
+Warn - empty seal: Sealed package can not be empty.
+Warn - fractal seal: Sealed package can not contain another package.
+Warn - blacklist world: Mailboxes are not allowed in this world.
+Warn - console not supported: This command can not be used from the console.
+Warn - entry open: '%entry% is being edited by %player%'
+Warn - cooling: Please wait before sending another item. (%seconds%s)
+Warn - cooling short: Please wait (%seconds%s)
+Warn - invalid mail: Invalid Mail
+
+Info - format: Format is %format%
+Info - box: Mailbox ~ %player% ~
+Info - mail: '&e[Mailbox] &7You have &6%amount% &7items in your mailbox.'
+Info - receive: '&e[Mailbox] &7You received mail from %player%.'
+Info - receive multi: '&e[Mailbox] &7You received &6%amount% &7new items.'
+
+Console - plugin detect: '%plugin% detected'
+
+Misc - item overflow: and %amount% more...
+Misc - date: MM/dd/yyy
+Misc - special characters: Names must consist of only a-z, A-Z, 0-9, _, and -
+Misc - too long: Names must be 20 characters or less
+
+Wood - oak: Oak
+Wood - spruce: Spruce
+Wood - birch: Birch
+Wood - jungle: Jungle
+Wood - acacia: Acacia
+Wood - dark oak: Dark Oak
+Wood - crimson: Crimson
+Wood - warped: Warped
+
+Color - black: Black
+Color - red: Red
+Color - green: Green
+Color - brown: Brown
+Color - blue: Blue
+Color - purple: Purple
+Color - cyan: Cyan
+Color - light gray: Light Gray
+Color - gray: Gray
+Color - pink: Pink
+Color - lime: Lime
+Color - yellow: Yellow
+Color - light blue: Light Blue
+Color - magenta: Magenta
+Color - orange: Orange
+Color - white: White
+
+Lore ID - empty package: Empty
+Lore ID - sealed package: Sealed
+Lore ID - global box: Global
+
+Icon - back: Back
+Icon - close: Close
+Icon - seal: Seal
+Icon - seal lore: » Click to open package
+Icon - collect: Collect All
+Icon - scroll up: Scroll Up
+Icon - scroll down: Scroll Down
+Icon - destroy: Destroy Item
+Icon - on join: on join
+Icon - on receive: on receive mail
+Icon - player mailbox: "%player%'s Mailbox"
+Icon - insert mail: Insert Mail
+Icon - to: 'To:'
+Icon - send mail: Send Mail
+Icon - backspace: Backspace
+Icon - send lore: » Click to send mail
+Icon - apply: Apply changes

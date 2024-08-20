@@ -1,0 +1,11 @@
+# Integrations
+# --- Dynmap ---
+Enable Dynmap: true
+Show Markers by Default: true
+# -1 for always visible
+Mailbox Min Zoom: 4
+Mailbox Max Zoom: -1
+Global Mailbox Min Zoom: -1
+Global Mailbox Max Zoom: -1
+Postbox Min Zoom: -1
+Postbox Max Zoom: -1

@@ -1,0 +1,98 @@
+name: StarMail
+version: 1.7.2
+main: me.sword7.starmail.StarMail
+api-version: 1.13
+authors: [ sword7 ]
+description: A mailing system for Minecraft
+website: https://linktr.ee/devsword7
+softdepend: [dynmap]
+load: POSTWORLD
+
+commands:
+  starmail:
+    description: display plugin commands
+  boxes:
+    description: list all mailbox locations
+  breakboxes:
+    description: break all mailboxes
+  mail:
+    description: open virtual mailbox
+  sendto:
+    description: send mail to player
+  letter:
+    description: give player letters
+    permission: mail.loot
+  pack:
+    description: give player packages
+    permission: mail.loot
+  box:
+    description: give player mailboxes
+    permission: mail.loot
+  postbox:
+    description: get postbox
+    permission: mail.loot
+  globalbox:
+    description: give player global mailbox
+    permission: mail.loot
+  warehouse:
+    description: manage warehouse entries
+    permission: mail.warehouse
+
+permissions:
+  mail.*:
+    description: grants all permissions
+    default: op
+  mail.loot:
+    description: grants access to summon commands
+    default: op
+  mail.custom:
+    description: allows sending any item
+    default: op
+  mail.email.*:
+    description: grants access to remote commands
+    default: op
+  mail.email.box:
+    description: grants access to remote mailbox command
+    default: op
+  mail.email.send:
+    description: grants access to remote send command
+    default: op
+  mail.craft.*:
+    description: grants access to all crafting recipes
+    default: op
+  mail.craft.letter:
+    description: allows letter crafting
+    default: op
+  mail.craft.package.*:
+    description: grants access to crafting all packages
+    default: op
+  mail.craft.package.crate:
+    description: allows crate crafting
+    default: op
+  mail.craft.package.chest:
+    description: allows chest crafting
+    default: op
+  mail.craft.package.gift:
+    description: allows gift crafting
+    default: op
+  mail.craft.box:
+    description: allows mailbox crafting
+    default: op
+  mail.warehouse:
+    description: grants access to warehouse commands
+    default: op
+  mail.block.*:
+    description: allows use of all blocks
+    default: op
+  mail.block.mailbox:
+    description: allows use of the mailbox block
+    default: op
+  mail.block.globalbox:
+    description: allows use of all global mailbox block
+    default: op
+  mail.block.postbox:
+    description: allows use of postbox block
+    default: op
+  mail.access:
+    description: grants access to other's mail
+    default: op

@@ -1,0 +1,132 @@
+Label - commands: 指令
+Label - page: 页
+Label - contents: 内容
+Label - letter: 信
+Label - letter and quill: 信与笔墨
+Label - dyed letter and quill: '%color% 信与笔墨'
+Label - fancy letter and quill: 华丽的 %color% 信与笔墨
+Label - postbox: 邮筒
+Label - mailbox: 邮箱
+Label - dyed mailbox: '%color% 邮箱'
+Label - notifications: 提醒
+Label - package: 包裹
+Label - crate: 板条箱
+Label - wooden crate: '%wood% 板条箱'
+Label - fancy crate: 华丽的 %color% 板条箱
+Label - chest: 箱子
+Label - wooden chest: '%wood% 箱子'
+Label - fancy chest: 华丽的 %color% 箱子
+Label - gift: 礼盒
+Label - dyed gift: '%color% 礼盒'
+Label - from: 来自
+Label - world: 世界
+Label - box locations: 邮箱位置
+Label - tracking number: 追踪编号
+Label - postbox types: 邮筒样式
+Label - box types: 邮箱样式
+Label - letter types: 信件样式
+Label - pack types: 包裹样式
+Label - enabled: 开启
+Label - disabled: 关闭
+Label - server: 服务器
+Label - warehouse: 仓库
+Label - warehouse entries: 仓库项目
+Label - item: 物品
+Label - style: 样式
+Label - expired: 编号已过期
+Text - intro: '添加了邮箱，信件以及包裹。 \nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - boxes: 显示所有邮箱位置
+Text - breakboxes: 拆毁所有邮箱
+Text - mail: 打开虚拟邮箱
+Text - sento: 寄件给玩家
+Text - summon item: 生成物品
+Text - warehouse send: 将仓库项目以邮件发送给玩家
+Text - warehouse save: 保存物品至仓库
+Text - warehouse rename: 重命名仓库项目
+Text - warehouse edit: 编辑仓库项目
+Text - warehouse list: 展示所有仓库项目
+Text - warehouse delete: 删除仓库项目
+Const - unknown: Unknown
+Arg - player: player
+Arg - type: type
+Arg - amount: amount
+Arg - mail: mail
+Arg - name: name
+Arg - from: from
+Arg - to: to
+Success - sent: 邮件已发送至 %player%
+Seccess - sent short: 邮件已发送！
+Success - gift: '%amount% 个物品已发送至 %player%'
+Success - break: 邮箱已拆毁
+Success - warehouse create: 项目添加成功
+Success - warehouse rename: 项目命名成功
+Success - warehouse delete: 项目已删除
+Warn - no permission: 您没有权限使用这条命令。
+Warn - no permission block: 您没有权限使用这个方块。
+Warn - not mail: 您手上的不是邮件。
+Warn - box limit: 您不可以再放置邮箱了。
+Warn - player not found: 玩家 %player% 未找到。
+Warn - unknown type: 未知种类。
+Warn - expired: 邮件的追踪编号已过期
+Warn - empty seal: 包裹是空的！
+Warn - fractal seal: 包裹里不能再放包裹了哦。
+Warn - blacklist world: 这个世界不能使用邮箱哦。
+Warn - console not supported: 只能由玩家执行哦。
+Warn - entry open: '%entry% 正在被 %player% 编辑中'
+Warn - cooling: 请稍等片刻 (%seconds%秒)
+Warn - cooling short: 请等待 (%seconds%秒)
+Warn - invalid mail: 不正确的邮件
+Info - format: 格式为 %format%
+Info - box: 邮箱 ~ %player% ~
+Info - mail: '&e[邮箱] &7您有 &6%amount% &7份邮件'
+Info - receive: '&e[邮箱] &7收到了来自 %player% 的邮件'
+Info - receive multi: '&e[邮箱] &7您收到了 &6%amount% &7份新邮件'
+Console - plugin detect: '检测到了 %plugin%'
+Misc - item overflow: 等 %amount% 个...
+Misc - date: yyy/MM/dd
+Misc - special characters: 名称只能包括 a-z, A-Z, 0-9, _, 以及 -
+Misc - too long: 请将名称缩短至20个字符以内
+Wood - oak: 橡木
+Wood - spruce: 云杉
+Wood - birch: 白桦
+Wood - jungle: 从林木
+Wood - acacia: 金合欢
+Wood - dark oak: 深色橡木
+Wood - crimson: 绯红
+Wood - warped: 诡异
+Color - black: 黑色
+Color - red: 红色
+Color - green: 绿色
+Color - brown: 棕色
+Color - blue: 蓝色
+Color - purple: 紫色
+Color - cyan: 青色
+Color - light gray: 浅灰色
+Color - gray: 灰色
+Color - pink: 粉色
+Color - lime: 浅绿色
+Color - yellow: 黄色
+Color - light blue: 浅蓝色
+Color - magenta: 品红色
+Color - orange: 橙色
+Color - white: 白色
+Lore ID - empty package: Empty
+Lore ID - sealed package: Sealed
+Lore ID - global box: Global
+Icon - back: 返回
+Icon - close: 关闭
+Icon - seal: 打包
+Icon - seal lore: » 点击拆封
+Icon - collect: 收取全部
+Icon - scroll up: 向上滚动
+Icon - scroll down: 向下滚动
+Icon - destroy: 焚烧站
+Icon - on join: 加入游戏时
+Icon - on receive: 收到邮件时
+Icon - player mailbox: '%player% 的邮箱'
+Icon - insert mail: 投入邮件
+Icon - to: 收件人：
+Icon - send mail: 发送
+Icon - backspace: ««退格
+Icon - send lore: » 点击发送邮件
+Icon - apply: 应用更改

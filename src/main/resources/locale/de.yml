@@ -1,0 +1,146 @@
+# German Language File
+
+Label - commands: Befehle
+Label - page: Seite
+Label - contents: Inhalt
+Label - letter: Brief
+Label - letter and quill: Brief und Feder
+Label - dyed letter and quill: '%color%er Buchstabe und Feder'
+Label - fancy letter and quill: Ausgefallene %color%er Brief und Feder
+Label - postbox: Postkasten
+Label - mailbox: Briefkasten
+Label - dyed mailbox: '%color%er Briefkasten'
+Label - notifications: Benachrichtigungen
+Label - package: Paket
+Label - crate: Kiste
+Label - wooden crate: '%wood%Kiste'
+Label - fancy crate: Ausgefallene %color%e Kiste
+Label - chest: Kiste
+Label - wooden chest: '%wood%Kiste'
+Label - fancy chest: Ausgefallene %color%er Kiste
+Label - gift: Geschenk
+Label - dyed gift: '%color%e Geschenk'
+Label - from: Von
+Label - world: Welt
+Label - box locations: Postfach Standort
+Label - tracking number: Sendeverfolgungsnummer
+Label - postbox types: Postbox Types
+Label - box types: Postkastentypen
+Label - letter types: Buchstabentypen
+Label - pack types: Pakettypen
+Label - enabled: Aktiviert
+Label - disabled: Behindert
+Label - server: Server
+Label - warehouse: Warenhaus
+Label - warehouse entries: Lagereinträge
+Label - item: Artikel
+Label - style: Stil
+Label - expired: Sendeverfolgungsnummer abgelaufen
+
+Text - intro: 'Fügt Postfächer, Briefe und Pakete hinzu.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - boxes: Liste alle Postfächer-Standorte auf
+Text - breakboxes: Zerstöre alle Postfächer
+Text - mail: Öffnen Sie das virtuelle Postfach
+Text - sento: Sende eine Mail an den Spieler
+Text - summon item: Gib dem Spieler Gegenstände
+Text - warehouse send: mail an spieler senden
+Text - warehouse save: artikel in der hand im lager lagern
+Text - warehouse rename: lagereintrag umbenennen
+Text - warehouse edit: lagereintrag bearbeiten
+Text - warehouse list: alle lagereinträge auflisten
+Text - warehouse delete: lagereintrag löschen
+
+Const - unknown: Unbekannt
+
+Arg - player: Spieler
+Arg - type: Art
+Arg - amount: Menge
+Arg - mail: post
+Arg - name: name
+Arg - from: von
+Arg - to: in
+
+Success - sent: Gesendet an %player%
+Success - sent short: Mail Gesendet!
+Success - gift: '%amount% Items gesendet an %player%'
+Success - break: Briefkästen zerstört
+Success - warehouse create: Eintrag hinzugefügt
+Success - warehouse rename: Eintrag umbenannt
+Success - warehouse delete: Eintrag gelöscht
+
+Warn - no permission: Sie haben keine Berechtigung für diesen Befehl.
+Warn - no permission block: You do not have permission to use this block.
+Warn - not mail: Sie halten keine Post in der Hand.
+Warn - box limit: Sie können keine Postfächer mehr platzieren.
+Warn - player not found: Spieler %player% nicht gefunden.
+Warn - unknown type: Unbekannter Type.
+Warn - expired: Sendungsnummer ist abgelaufen.
+Warn - empty seal: Verpackte Paket darf nicht leer sein.
+Warn - fractal seal: Das verpackte Paket darf keine anderen verpackten Pakete beinhalten.
+Warn - blacklist world: Postfächer sind in dieser Welt nicht erlaubt.
+Warn - console not supported: Dieser Befehl kann nicht über die Konsole verwendet werden.
+Warn - entry open: '%entry% wird von %player% bearbeitet'
+Warn - cooling: Bitte warten Sie, bevor Sie einen anderen Artikel senden. (%seconds%s)
+Warn - cooling short: Warten Sie mal (%seconds%s)
+Warn - invalid mail: Ungültige Mail
+
+Info - format: Format ist %format%
+Info - box: Postfach ~ %player% ~
+Info - mail: '&e[Post] &7Du hast &6%amount% &7Items in deinen Postfach.'
+Info - receive: '&e[Post] &7Du hast eine Mail von %player%.'
+Info - receive multi: '&e[Post] &7Du haben &6%amount% &7neue Items erhalten.'
+
+Console - plugin detect: '%plugin% erkannt'
+
+Misc - item overflow: und %amount% mehr...
+Misc - date: dd/MM/yyy
+Misc - special characters: Namen dürfen nur aus a-z, A-Z, 0-9, _ und - bestehen
+Misc - too long: Namen dürfen maximal 20 Zeichen lang sein
+
+Wood - oak: Eichen
+Wood - spruce: Fichten
+Wood - birch: Birken
+Wood - jungle: Dschungel
+Wood - acacia: Akazien
+Wood - dark oak: Dunkle Eichen
+Wood - crimson: Purpurroten
+Wood - warped: Verzogen
+
+Color - black: Schwarz
+Color - red: Rot
+Color - green: Grün
+Color - brown: Braun
+Color - blue: Blau
+Color - purple: Lila
+Color - cyan: Cyan-
+Color - light gray: Hellgrau
+Color - gray: Grau
+Color - pink: Hellrot
+Color - lime: Hellgrün
+Color - yellow: Gelb
+Color - light blue: Hellblau
+Color - magenta: Magenta
+Color - orange: Orang
+Color - white: Weiß
+
+Lore ID - empty package: Leeres
+Lore ID - sealed package: Verpacktes
+Lore ID - global box: Global
+
+Icon - back: Zurück
+Icon - close: Schliessen
+Icon - seal: Verpackt
+Icon - seal lore: » Klicken Sie hier, um das Paket zu öffnen
+Icon - collect: Alles sammeln
+Icon - scroll up: Hochscrollen
+Icon - scroll down: Runterscrollen
+Icon - destroy: Zerstöre Item
+Icon - on join: beim beitritt
+Icon - on receive: auf brief erhalten
+Icon - player mailbox: "%player%s Briefkasten"
+Icon - insert mail: Mail Einfügen
+Icon - to: 'Zu: '
+Icon - send mail: Mail Senden
+Icon - backspace: Rücktaste
+Icon - send lore: » Klicken Sie zum Senden
+Icon - apply: Änderungen übernehmen
