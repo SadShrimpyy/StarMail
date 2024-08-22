@@ -111,3 +111,8 @@ buildNumber.properties
 
 # Common working directory
 run/
+
+# Units of working & units of test
+copy.sh
+rem.sh
+1_17_1/
