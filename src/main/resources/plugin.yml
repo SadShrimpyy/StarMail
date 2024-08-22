@@ -1,10 +1,10 @@
 name: StarMail
-version: 1.7.2
+version: 2.0
 main: me.sword7.starmail.StarMail
-api-version: 1.13
-authors: [ sword7 ]
-description: A mailing system for Minecraft
-website: https://linktr.ee/devsword7
+api-version: 1.17.1
+authors: [ sword7, SadShiry ]
+description: A mailing system for Minecraft - Maintained version
+website: https://taplink.cc/sadshiry
 softdepend: [dynmap]
 load: POSTWORLD
 
