@@ -1,4 +1,4 @@
-package me.sword7.starmail.util.particle;
+package com.sadshiry.particle;
 
 import org.bukkit.entity.Player;
 

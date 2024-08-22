@@ -1,10 +1,13 @@
 package me.sword7.starmail.gui.data;
 
+import com.sadshiry.Particle_Legacy;
+import com.sadshiry.Particle_Modern;
+import com.sadshiry.particle.IParticle;
 import me.sword7.starmail.gui.Icons;
 import me.sword7.starmail.gui.page.Page;
 import me.sword7.starmail.pack.Pack;
+import me.sword7.starmail.sys.Version;
 import me.sword7.starmail.util.MailUtil;
-import me.sword7.starmail.util.particle.Particle;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,6 +19,7 @@ public class SealedData extends PackData {
     private UUID trackingNo;
     private boolean opened = false;
     private boolean expired;
+    private IParticle particle;
 
     public SealedData(Player player, Page home, UUID trackingNo, ItemStack[] contents, Pack pack, int slot, boolean expired) {
         super(player, home, slot, pack);
@@ -62,7 +66,8 @@ public class SealedData extends PackData {
             pack.playCloseSound(player);
             player.playSound(player.getLocation(), Pack.getPoofSound(), 2f, 1.2f);
 
-            Particle.playCloud(player);
+            particle = Version.current.value < 109 ? new Particle_Legacy() : new Particle_Modern();
+            particle.playCloud(player);
             MailUtil.giveItems(player, contents);
         }
     }

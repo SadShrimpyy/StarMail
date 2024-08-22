@@ -1,16 +1,16 @@
-package me.sword7.starmail.util.particle;
+package com.sadshiry;
 
+import com.sadshiry.particle.IParticle;
 import net.minecraft.server.v1_8_R3.EnumParticle;
 import net.minecraft.server.v1_8_R3.PacketPlayOutWorldParticles;
-import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-public class Particle_V1_8 implements IParticle {
+public class Particle_Legacy implements IParticle {
 
-    @Override
     public void playCloud(Player player) {
         Location loc = player.getLocation();
         Vector dir = player.getLocation().getDirection();
@@ -19,5 +19,4 @@ public class Particle_V1_8 implements IParticle {
             ((CraftPlayer) online).getHandle().playerConnection.sendPacket(packet);
         }
     }
-
 }
