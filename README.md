@@ -1,4 +1,4 @@
-# Maintained version (supports 1.8 to 1.20)
+# Maintained version (supports 1.8 to 1.21)
 The original version of the plugin, therefore the source code, can be found [here](https://gitlab.com/sword7/starmail).
 The first commit (15867618) of this repo, contain all and only the source code from the [original repo](https://gitlab.com/sword7/starmail) with project id: 15867618 by the commit id: 18a686f29152649fc0afa0577b4e20b11e002fcf.
 
