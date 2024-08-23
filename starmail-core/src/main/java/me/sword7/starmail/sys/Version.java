@@ -4,6 +4,9 @@ import org.bukkit.Bukkit;
 
 public enum Version {
 
+    V1_21(121),
+    V1_20(120),
+    V1_19(119),
     V1_18(118),
     V1_17(117),
     V1_16(116),
@@ -22,31 +25,21 @@ public enum Version {
 
     private static Version getVersion() {
         String versionString = Bukkit.getVersion();
-        if (versionString.contains("1.18")) {
-            return V1_18;
-        } else if (versionString.contains("1.17")) {
-            return V1_17;
-        } else if (versionString.contains("1.16")) {
-            return V1_16;
-        } else if (versionString.contains("1.15")) {
-            return V1_15;
-        } else if (versionString.contains("1.14")) {
-            return V1_14;
-        } else if (versionString.contains("1.13")) {
-            return V1_13;
-        } else if (versionString.contains("1.12")) {
-            return V1_12;
-        } else if (versionString.contains("1.11")) {
-            return V1_11;
-        } else if (versionString.contains("1.10")) {
-            return V1_10;
-        } else if (versionString.contains("1.9")) {
-            return V1_9;
-        } else if (versionString.contains("1.8")) {
-            return V1_8;
-        } else {
-            return UNKNOWN;
-        }
+        if (versionString.contains("1.21")) return V1_21;
+        else if (versionString.contains("1.20")) return V1_20;
+        else if (versionString.contains("1.19")) return V1_19;
+        else if (versionString.contains("1.18")) return V1_18;
+        else if (versionString.contains("1.17")) return V1_17;
+        else if (versionString.contains("1.16")) return V1_16;
+        else if (versionString.contains("1.15")) return V1_15;
+        else if (versionString.contains("1.14")) return V1_14;
+        else if (versionString.contains("1.13")) return V1_13;
+        else if (versionString.contains("1.12")) return V1_12;
+        else if (versionString.contains("1.11")) return V1_11;
+        else if (versionString.contains("1.10")) return V1_10;
+        else if (versionString.contains("1.9")) return V1_9;
+        else if (versionString.contains("1.8")) return V1_8;
+        else return UNKNOWN;
     }
 
     public final int value;
