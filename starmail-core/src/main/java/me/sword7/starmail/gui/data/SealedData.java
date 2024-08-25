@@ -1,12 +1,9 @@
 package me.sword7.starmail.gui.data;
 
-import com.sadshiry.Particle_Legacy;
-import com.sadshiry.Particle_Modern;
 import me.sword7.starmail.util.Particle;
 import me.sword7.starmail.gui.Icons;
 import me.sword7.starmail.gui.page.Page;
 import me.sword7.starmail.pack.Pack;
-import me.sword7.starmail.sys.Version;
 import me.sword7.starmail.util.MailUtil;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -66,8 +63,10 @@ public class SealedData extends PackData {
             pack.playCloseSound(player);
             player.playSound(player.getLocation(), Pack.getPoofSound(), 2f, 1.2f);
 
-            Particle.playCloud(player);
             MailUtil.giveItems(player, contents);
+//             TODO: Error - EventException @ ~.SessionData.lambda$exit$1(SessionData.java:172) ~[?:?]
+//            Particle.playCloud(player);
+//            System.out.println("\n >> Cloud played\n");
         }
     }
 
