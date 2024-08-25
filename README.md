@@ -19,6 +19,8 @@ Additionally, Star Mail contains a simple API that allows for many creative impl
 # Changes compared to the original
 Same as commits, but in a list. In other words every implementation can be found here.
 ```
+[08/25/24 #1] Bug-fix: a conversion error to maven modules did not allow packages to be opened
+
 [08/23/24 #1] Add support for Minecraft versions 1.19.x, 1.20.x and 1.21.x.
 
 [08/22/24 #4] Improved legacy compatibility through maven modules: spigot-legacy (<1.9), spigot-modern (>1.8.8), spigot-core and commons
