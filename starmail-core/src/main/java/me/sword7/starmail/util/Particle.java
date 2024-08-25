@@ -8,14 +8,11 @@ import org.bukkit.entity.Player;
 
 public class Particle {
 
-    private static IParticle particle = selectParticle();
-
-    private static IParticle selectParticle() {
-        if (Version.current.value >= 109) {
-            return new Particle_Modern();
-        } else {
-            return new Particle_Legacy();
-        }
+    private static final IParticle particle;
+    static {
+        particle = Version.current.value >= 109
+            ? new Particle_Modern()
+            : new Particle_Legacy();
     }
 
     public static void playCloud(Player player) {
