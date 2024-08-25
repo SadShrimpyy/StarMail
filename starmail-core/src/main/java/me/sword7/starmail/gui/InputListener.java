@@ -70,11 +70,8 @@ public class InputListener implements Listener {
                 itemStackHandler.doFakeDouble(e, player.getOpenInventory(), orderedRawSlots, packRawSlot);
             }
         } else if (clickType.isShiftClick()) {
-            if (isPackInventory(e)) {
-                e.setCancelled(false);
-                return;
-            }
             e.setCancelled(true);
+            if (isPackInventory(e)) return;
             if (canInsertItem(isInsertablePage, packItemSlot, slot)) {
                 Inventory top = player.getOpenInventory().getTopInventory();
                 Inventory bottom = player.getOpenInventory().getBottomInventory();
