@@ -24,7 +24,7 @@ public class PluginHelp {
         sendCommand(sender, "&6/boxes: &r" + TEXT_BOXES);
         sendCommand(sender, "&6/breakboxes: &r" + TEXT_BREAK);
         if (Permissions.canEBox(sender)) sendCommand(sender, "&6/mail: &r" + TEXT_MAIL);
-        if (Permissions.canESend(sender)) sendCommand(sender, "&6/sento &c[" + ARG_PLAYER + "]&6: &r" + TEXT_SENDTO);
+        if (Permissions.canESend(sender)) sendCommand(sender, "&6/sendto &c[" + ARG_PLAYER + "]&6: &r" + TEXT_SENDTO);
         if (Permissions.canSummon(sender)) {
             if (hasLetter) {
                 sendCommand(sender, "&6/letter &c[" + ARG_TYPE + "] [" + ARG_PLAYER + "] [" + ARG_AMOUNT + "]&6: &r" + TEXT_SUMMON);

@@ -37,11 +37,11 @@ Label - item: Artikel
 Label - style: Stil
 Label - expired: Sendeverfolgungsnummer abgelaufen
 
-Text - intro: 'Fügt Postfächer, Briefe und Pakete hinzu.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - intro: 'Fügt Postfächer, Briefe und Pakete hinzu.\nWiki: https://github.com/SadShrimpyy/StarMail/wiki'
 Text - boxes: Liste alle Postfächer-Standorte auf
 Text - breakboxes: Zerstöre alle Postfächer
 Text - mail: Öffnen Sie das virtuelle Postfach
-Text - sento: Sende eine Mail an den Spieler
+Text - sendto: Sende eine Mail an den Spieler
 Text - summon item: Gib dem Spieler Gegenstände
 Text - warehouse send: mail an spieler senden
 Text - warehouse save: artikel in der hand im lager lagern

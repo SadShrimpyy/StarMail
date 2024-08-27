@@ -47,11 +47,11 @@ public enum Language {
     LABEL_STYLE("Label - style", "Style"),
     LABEL_EXPIRED("Label - expired", "TrackingNo Expired"),
 
-    TEXT_INTRO("Text - intro", "Adds mailboxes, letters, and packages.\\nRead more on the wiki: https://gitlab.com/sword7/starmail/wikis/"),
+    TEXT_INTRO("Text - intro", "Adds mailboxes, letters, and packages.\\nRead more on the wiki: https://github.com/SadShrimpyy/StarMail/wiki"),
     TEXT_BOXES("Text - boxes", "list all mailbox locations"),
     TEXT_BREAK("Text - breakboxes", "break all mailboxes"),
     TEXT_MAIL("Text - mail", "open virtual mailbox"),
-    TEXT_SENDTO("Text - sento", "send mail to player"),
+    TEXT_SENDTO("Text - sendto", "send mail to player"),
     TEXT_SUMMON("Text - summon item", "give items to player"),
     TEXT_WAREHOUSE_SEND("Text - warehouse send", "send mail to player"),
     TEXT_WAREHOUSE_SAVE("Text - warehouse save", "save hand item to warehouse"),

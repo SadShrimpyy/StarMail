@@ -37,11 +37,11 @@ Label - item: Item
 Label - style: Style
 Label - expired: TrackingNo Expired
 
-Text - intro: 'Adds mailboxes, letters, and packages.\nRead more on the wiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - intro: 'Adds mailboxes, letters, and packages.\nRead more on the wiki: https://github.com/SadShrimpyy/StarMail/wiki'
 Text - boxes: list all mailbox locations
 Text - breakboxes: break all mailboxes
 Text - mail: open virtual mailbox
-Text - sento: send mail to player
+Text - sendto: send mail to player
 Text - summon item: give items to player
 Text - warehouse send: send mail to player
 Text - warehouse save: save hand item to warehouse

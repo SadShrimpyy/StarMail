@@ -37,11 +37,11 @@ Label - item: Item
 Label - style: Style
 Label - expired: TrackingNo Expired
 
-Text - intro: 'Dodaje skrzynki pocztowe, listy i paczki.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - intro: 'Dodaje skrzynki pocztowe, listy i paczki.\nWiki: https://github.com/SadShrimpyy/StarMail/wiki'
 Text - boxes: Lista lokacji skrzynek odbiorczych
 Text - breakboxes: Zniszcz wszystkie skrzynki odbiorcze
 Text - mail: Otwórz wirtualną skrzynkę odbiorczą
-Text - sento: wyślij mail do gracza
+Text - sendto: wyślij mail do gracza
 Text - summon item: przekaż przedmioty graczowi
 Text - warehouse send: Wyślij przesyłkę do osoby
 Text - warehouse save: Zapisz przedmiot w magazynie

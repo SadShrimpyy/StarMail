@@ -37,11 +37,11 @@ Label - item: Предметы
 Label - style: Стиль
 Label - expired: Трэк-номер Истек
 
-Text - intro: 'Добавляет почтовые ящики, письма и пакеты.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - intro: 'Добавляет почтовые ящики, письма и пакеты.\nWiki: https://github.com/SadShrimpyy/StarMail/wiki'
 Text - boxes: список местоположения всех почтовых ящиков
 Text - breakboxes: конфисковать все почтовые ящики
 Text - mail: открыть виртуальный pochtovyy yashchik
-Text - sento: отправить почту игроку
+Text - sendto: отправить почту игроку
 Text - summon item: давать предметы игроку
 Text - warehouse send: отправить письмо игроку
 Text - warehouse save: сохранить товар в руке на склад

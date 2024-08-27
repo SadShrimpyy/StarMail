@@ -37,11 +37,11 @@ Label - item: Article
 Label - style: Style
 Label - expired: N° De Suivi Expiré
 
-Text - intro: 'Ajoute des boîtes aux lettres, des lettres et des packages.\nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - intro: 'Ajoute des boîtes aux lettres, des lettres et des packages.\nWiki: https://github.com/SadShrimpyy/StarMail/wiki'
 Text - boxes: lister toutes les positions de Boites aux Lettres
 Text - breakboxes: Retirer toutes les Boites aux Lettres
 Text - mail: Ouvrir la Boite aux Lettres Virtuelle
-Text - sento: Envoyer un courrier au joueur
+Text - sendto: Envoyer un courrier au joueur
 Text - summon item: donner des objets au joueur
 Text - warehouse send: envoyer un courrier au joueur
 Text - warehouse save: enregistrer l'article en main dans l'entrepôt

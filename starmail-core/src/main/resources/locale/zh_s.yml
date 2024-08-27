@@ -34,11 +34,11 @@ Label - warehouse entries: 仓库项目
 Label - item: 物品
 Label - style: 样式
 Label - expired: 编号已过期
-Text - intro: '添加了邮箱，信件以及包裹。 \nWiki: https://gitlab.com/sword7/starmail/wikis/'
+Text - intro: '添加了邮箱，信件以及包裹。 \nWiki: https://github.com/SadShrimpyy/StarMail/wiki'
 Text - boxes: 显示所有邮箱位置
 Text - breakboxes: 拆毁所有邮箱
 Text - mail: 打开虚拟邮箱
-Text - sento: 寄件给玩家
+Text - sendto: 寄件给玩家
 Text - summon item: 生成物品
 Text - warehouse send: 将仓库项目以邮件发送给玩家
 Text - warehouse save: 保存物品至仓库
