@@ -1,6 +1,5 @@
 package me.sword7.starmail.gui;
 
-import com.avaje.ebean.validation.NotNull;
 import com.google.common.collect.ImmutableList;
 import me.sword7.starmail.sys.Version;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -9,7 +8,6 @@ import org.bukkit.inventory.InventoryView;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 
