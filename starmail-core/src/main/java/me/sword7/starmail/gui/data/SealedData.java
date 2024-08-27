@@ -66,7 +66,6 @@ public class SealedData extends PackData {
             MailUtil.giveItems(player, contents);
 //             TODO: Error - EventException @ ~.SessionData.lambda$exit$1(SessionData.java:172) ~[?:?]
 //            Particle.playCloud(player);
-//            System.out.println("\n >> Cloud played\n");
         }
     }
 
