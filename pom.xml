@@ -23,8 +23,20 @@
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <junit.version>5.10.2</junit.version>
+
+        <specialsource-maven-plugin.version>2.0.2</specialsource-maven-plugin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-surefire-plugin.version>3.2.5</maven-surefire-plugin.version>
+        <maven-shade-plugin.version>3.5.3</maven-shade-plugin.version>
+        <maven-jar-plugin.version>3.4.1</maven-jar-plugin.version>
+        <maven.deploy.skip>releases</maven.deploy.skip>
+
+        <ignoreSnapshots>true</ignoreSnapshots>
+        <ignoreReleases>true</ignoreReleases>
     </properties>
 
     <dependencyManagement>
@@ -50,12 +62,47 @@
                 <groupId>com.sadshiry</groupId>
                 <artifactId>spigot-modern</artifactId>
                 <version>1.0</version>
+                <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.sadshiry</groupId>
                 <artifactId>spigot-legacy</artifactId>
                 <version>1.0</version>
+                <scope>compile</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>3.0.1</version>
+                <configuration>
+                    <tagNameFormat>v@{project.version}</tagNameFormat>
+                    <preparationGoals>clean verify</preparationGoals>
+                    <scmCommentPrefix>Maven Release Plugin:</scmCommentPrefix>
+                    <scmReleaseCommitComment>@{prefix} Release @{releaseLabel}&#x1f389;!</scmReleaseCommitComment>
+                    <scmDevelopmentCommitComment>@{prefix} Bump version.</scmDevelopmentCommitComment>
+                    <scmRollbackCommitComment>@{prefix} Roll back.</scmRollbackCommitComment>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <links>
+                        <link>https://helpch.at/docs/1.17.1/</link>
+                    </links>
+                    <show>protected</show>
+                    <nohelp>true</nohelp>
+                    <failOnError>false</failOnError>
+                    <additionalOptions>-source 17</additionalOptions>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
