@@ -109,6 +109,10 @@ public class InputListener implements Listener {
         return e.getClickedInventory() == null || !LiveSessions.hasSession(e.getWhoClicked());
     }
 
+    private static boolean playerHasNoSession(InventoryDragEvent e) {
+        return !LiveSessions.hasSession(e.getWhoClicked());
+    }
+
     private static boolean wantAndCanInsert(boolean isGUIClick, boolean isInsertableSlot) {
         return !isGUIClick || isInsertableSlot;
     }
@@ -127,7 +131,7 @@ public class InputListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onDrag(InventoryDragEvent e) {
-        if (LiveSessions.hasSession(e.getWhoClicked())) return;
+        if (playerHasNoSession(e)) return;
 
         Player player = (Player) e.getWhoClicked();
         SessionData sessionData = LiveSessions.getData(player);
