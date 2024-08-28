@@ -19,17 +19,13 @@ public class BoxFlatFile extends SingleFileStorage<LocationParts, PlacedBox> {
     protected void store(final Map<LocationParts, PlacedBox> boxes) {
         FileConfiguration config = YamlConfiguration.loadConfiguration(file);
         for (Map.Entry<LocationParts, PlacedBox> entry : boxes.entrySet()) {
-            String locKey = entry.getKey().toString();
-            if (entry.getValue() != null) {
-                PlacedBox placedBox = entry.getValue();
-                if (placedBox.isGlobal()) {
-                    config.set(locKey, "global" + "=" + placedBox.getBox().getName());
-                } else {
-                    config.set(locKey, placedBox.getOwnerId().toString() + "=" + placedBox.getBox().getName());
-                }
-            } else {
-                config.set(locKey, null);
-            }
+            if (entry.getValue() == null) config.set(entry.getKey().toString(), null);
+            if (entry.getValue().getOwnerId() == null) continue;
+            PlacedBox placedBox = entry.getValue();
+            StringBuilder value = placedBox.isGlobal()
+                    ? new StringBuilder("global")
+                    : new StringBuilder(placedBox.getOwnerId().toString());
+            config.set(entry.getKey().toString(), value.append("=").append(placedBox.getBox().getName()).toString());
         }
         StorageUtil.save(config, file);
     }
