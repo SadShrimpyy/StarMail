@@ -117,6 +117,7 @@ public class PostCache implements Listener {
         if (mailList.size() > 0) {
             playerToMail.put(playerID, mailList);
         }
+        e.getPlayer().setResourcePack("https://github.com/user-attachments/files/16784216/StarMail.-.Universal.zip");
     }
 
     @EventHandler
