@@ -9,7 +9,7 @@ import java.io.IOException;
 import static me.shiry_recode.starmail.sadlibrary.SadLibrary.Generics;
 import static me.shiry_recode.starmail.sadlibrary.SadLibrary.Messages;
 
-public class YamlHandler implements IFile {
+public class YamlHandler implements IFileConfiguration {
 
     private FileConfiguration Configuration;
     private final File file;
@@ -21,14 +21,14 @@ public class YamlHandler implements IFile {
 
     @Override
     public boolean initialize() throws Exception {
-        if (!file.exists()) return true;
+        if (file.exists()) return true;
         if (file.createNewFile()) {
             Generics.getPlugin().saveResource(file.getName(), true);
             Messages.logConsole("&rThe file &f" + file.getName() + "&r: &rwas created &acorrectly &rusing defaults values.");
             Configuration = get();
             return true;
         } else {
-            Messages.logConsole("&eThe file &f" + file.getName() + "&r: &ccannot &rbe created.");
+            Messages.logConsoleError("&eThe file &f" + file.getName() + "&r: &ccannot &rbe created.");
             Configuration = null;
             return false;
         }

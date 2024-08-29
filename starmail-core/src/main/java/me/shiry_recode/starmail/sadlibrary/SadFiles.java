@@ -1,5 +1,9 @@
 package me.shiry_recode.starmail.sadlibrary;
 
+import java.io.File;
+
+import static me.shiry_recode.starmail.sadlibrary.SadLibrary.Generics;
+
 public class SadFiles {
 
     protected final String configName = "config.yml";
@@ -18,5 +22,11 @@ public class SadFiles {
 
     public String[] getAllFiles() {
         return this.allFiles;
+    }
+
+    public boolean fileExists(String path, String fileName) {
+        return path == null
+                ? new File(Generics.getPluginFolder() + File.separator + fileName).exists()
+                : new File(path + File.separator + fileName).exists();
     }
 }

@@ -16,7 +16,11 @@ public class CommandsManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        System.out.println(" command : " + command.getName());
+        System.out.println(" label : " + label);
         if (args.length == 0) {
+            if (getPlugin().getRegisteredCommand().containsKey("credits"))
+                getPlugin().getRegisteredCommand().get("credits").apply(args).perform(sender);
             return true;
         }
         String requestedSubCommand = args[0].toLowerCase();

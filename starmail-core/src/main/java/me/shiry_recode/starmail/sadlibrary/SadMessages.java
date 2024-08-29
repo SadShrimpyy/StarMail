@@ -8,7 +8,8 @@ import static me.shiry_recode.starmail.sadlibrary.SadLibrary.Configurations;
 
 public class SadMessages {
     private final ConsoleCommandSender Console = Bukkit.getServer().getConsoleSender();
-    private final String DefaultPrefix = "&c[&eStarMail Reloaded&7] &8> &7";
+    private final String DefaultPrefix = "&7[&eStarMail Reloaded&7] &8> &7";
+    private final String ErrorPrefix = "&4ERROR &e-> &r";
 
     public String translateColors(String str) {
         return ChatColor.translateAlternateColorCodes('&', str);
@@ -23,8 +24,7 @@ public class SadMessages {
     }
 
     public void logConsoleError(String message) {
-        String errorPrefix = "&4ERROR &e-> &r";
-        Console.sendMessage(translateColors(DefaultPrefix + errorPrefix + message));
+        Console.sendMessage(translateColors(DefaultPrefix + ErrorPrefix + message));
     }
 
     public void logConsole(String message) {

@@ -1,11 +1,10 @@
 package me.sword7.starmail.util;
 
+import me.shiry_recode.starmail.commands.ICommandSyntax;
 import me.sword7.starmail.sys.Language;
 import me.sword7.starmail.sys.Permissions;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -14,16 +13,47 @@ import java.util.Map;
 
 import static me.sword7.starmail.sys.Language.WARN_UNKNOWN_TYPE;
 
-public class CommandLoot implements CommandExecutor {
+public class CommandLoot implements ICommandSyntax {
 
     private ILootType lootType;
+    private String[] args;
 
-    public CommandLoot(ILootType lootType) {
-        this.lootType = lootType;
+    public CommandLoot(String[] args) {
+        this.args = args;
+        lootType = null;
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public String getName() {
+        return "";
+    }
+
+    @Override
+    public String getPermission(String[] args) {
+        return "";
+    }
+
+    @Override
+    public boolean hasSubcommands() {
+        return false;
+    }
+
+    @Override
+    public int expectedArgs() {
+        return 0;
+    }
+
+    @Override
+    public int possibleErrors() {
+        return 0;
+    }
+
+    @Override
+    public void applyLoot(ILootType lootType) {
+        this.lootType = lootType;
+    }
+
+    public void perform(CommandSender sender) {
 
         if (Permissions.canSummon(sender)) {
             if (args.length > 0) {
@@ -72,8 +102,6 @@ public class CommandLoot implements CommandExecutor {
                 sendHelp(sender);
             }
         }
-
-        return false;
     }
 
     private void giveLoot(Player player, ItemStack itemStack, int amount) {
@@ -87,5 +115,4 @@ public class CommandLoot implements CommandExecutor {
     private void sendHelp(CommandSender sender) {
         sender.sendMessage(ChatColor.RED + Language.INFO_FORMAT.fromFormat("/" + lootType.getRoot() + " [" + lootType.getType() + "] [" + Language.ARG_PLAYER + "] [" + Language.ARG_AMOUNT + "]"));
     }
-
 }
