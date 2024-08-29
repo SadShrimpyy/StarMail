@@ -10,7 +10,7 @@ load: POSTWORLD
 
 commands:
   sm:
-    aliases: smr, starmail, starmailreloaded
+    aliases: [smr, starmail, starmailreloaded]
   boxes:
     description: list all mailbox locations
   breakboxes:
