@@ -2,7 +2,7 @@ package me.shiry_recode.starmail.sadlibrary.files;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-public interface IFile {
+interface IFileConfiguration {
     FileConfiguration get();
     boolean exixts();
     void reload();
