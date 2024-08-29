@@ -31,7 +31,11 @@ import me.sword7.starmail.util.Crafting;
 import me.sword7.starmail.util.ItemListener;
 import me.sword7.starmail.warehouse.CommandWarehouse;
 import me.sword7.starmail.warehouse.WarehouseCache;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.HashMap;
+import java.util.function.Function;
 
 public final class StarMail extends JavaPlugin {
 
@@ -41,7 +45,19 @@ public final class StarMail extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+        initConfigsAndFeatures();
+        setCommands();
+        initListeners();
+    }
 
+    private static void initListeners() {
+        new InputListener();
+        new ItemListener();
+        new MailListener();
+        if (Version.current.isAutoCompleteSupported()) new AutoCompleteListener();
+    }
+
+    private static void initConfigsAndFeatures() {
         ConfigLoader.load();
         new PluginConfig();
         new IntegrationConfig();
@@ -68,7 +84,9 @@ public final class StarMail extends JavaPlugin {
 
         new LiveSessions();
         new Crafting();
+    }
 
+    private void setCommands() {
         getCommand("boxes").setExecutor(new CommandBoxes());
         getCommand("breakboxes").setExecutor(new CommandBreakBoxes());
         getCommand("mail").setExecutor(new CommandMail());
@@ -80,12 +98,6 @@ public final class StarMail extends JavaPlugin {
         getCommand("globalbox").setExecutor(new CommandLoot(new GlobalLoot()));
         getCommand("starmail").setExecutor(new CommandStarMail());
         getCommand("warehouse").setExecutor(new CommandWarehouse());
-
-        new InputListener();
-        new ItemListener();
-        new MailListener();
-        if (Version.current.isAutoCompleteSupported()) new AutoCompleteListener();
-
     }
 
     @Override
