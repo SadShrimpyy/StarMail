@@ -26,7 +26,7 @@ public class YamlHandler implements IFile {
             Generics.getPlugin().saveResource(file.getName(), true);
             Messages.logConsole("&rThe file &f" + file.getName() + "&r: &rwas created &acorrectly &rusing defaults values.");
             Configuration = get();
-            return true
+            return true;
         } else {
             Messages.logConsole("&eThe file &f" + file.getName() + "&r: &ccannot &rbe created.");
             Configuration = null;
