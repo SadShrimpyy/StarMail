@@ -1,4 +1,4 @@
-package me.shiry_recode.starmail.sadlibrary.files;
+package me.shiry_recode.starmail.sadlibrary;
 
 public class SadFiles {
 
