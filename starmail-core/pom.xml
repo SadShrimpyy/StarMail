@@ -140,6 +140,11 @@
             <artifactId>jsr305</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker</artifactId>
+            <version>3.46.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.sadshiry</groupId>

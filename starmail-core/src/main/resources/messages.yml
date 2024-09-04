@@ -1,0 +1,215 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# ,-----------------------------------------------------------------------------------, #
+# |                                                                                   | #
+# |                       _____ _             __  __       _ _                        | #
+# |                      / ____| |           |  \/  |     (_) |                       | #
+# |                     | (___ | |_ __ _ _ __| \  / | __ _ _| |                       | #
+# |                      \___ \| __/ _` | '__| |\/| |/ _` | | |                       | #
+# |                      ____) | || (_| | |  | |  | | (_| | | |                       | #
+# |                     |_____/ \__\__,_|_|  |_|  |_|\__,_|_|_|  _                    | #
+# |                     |  __ \    | |               | |        | |                   | #
+# |                     | |__) |___| | ___   __ _  __| | ___  __| |                   | #
+# |                     |  _  // _ \ |/ _ \ / _` |/ _` |/ _ \/ _` |                   | #
+# |                     | | \ \  __/ | (_) | (_| | (_| |  __/ (_| |                   | #
+# |                     |_|  \_\___|_|\___/ \__,_|\__,_|\___|\__,_|                   | #
+# |                                                                                   | #
+# '-----------------------------------------------------------------------------------' #
+#                                                                                       #
+#     Retained & Recoded:      |    My profile page:                                    #
+#     By SadShrimpy with <3    |    https://www.spigotmc.org/members/shiry.583821/      #
+#                                                                                       #
+#     Original (and discontinued) by Sword7:                                            #
+#     https://www.spigotmc.org/resources/star-mail.73406/                               #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+############################################################
+# +------------------------------------------------------+ #
+# |                       Notes                          | #
+# +------------------------------------------------------+ #
+############################################################
+
+# In this file you will find all the messages of the plugin,
+#  you can customize them as you want!
+
+# Each node have their own PLACEHOLDER(S), having their own
+#  meaning. If used at the execution of that message, they
+#  will go to be replaced by the corresponding value.
+# Each placeholder value, is explained in the paragraph
+#  preceding the message node.
+
+# Happy customization! :)
+
+
+############################################################
+# +------------------------------------------------------+ #
+# |               Plugin's related messages              | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Here you can modify the general messages of the plugin
+prefix: "&eStarMail &oReloaded &8> &7" # Prefix of the plugin
+reloaded:
+  correctly: "&7Plugin reloaded &acorrectly&7."
+  incorrectly: "&7Plugin reloaded &cincorrectly&7. &7Error founded in %error%&7."
+
+
+############################################################
+# +------------------------------------------------------+ #
+# |                       Language                       | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Here you can edit all the messages that are going to be used via chat.
+# Before each node you will find the explanation and the context in which the message will be shown.
+
+# In the default message line, you will find all the PLACEHOLDERS that that command will accept as input,
+# as well as a description of their usage. They can be used at will.
+
+player: # Player's related messages:
+  # When a player try to execute a command without the right permission.
+  #   -> %player-name%    -- to show the name of the player who executed the command;
+  #   -> %permission%     -- to show the name of the permission the player need to perform the command;
+  #   -> %command%        -- to show the name of the command performed.
+  no-permission: "&7Hey &e%player-name%&7, you &cdon't have &7the permission (&8%permission%&7), to execute: &b%command%&7."
+
+  # When the plugin can't find the player involved (e.g. in a command...)
+  # For example if you need to send a gift to Hologiman, if hologiman aren't online, hologiman will be the involved player
+  #   -> %player-name%        -- to show the name of the player who executed the command
+  #   -> %player-involevd%    -- to show the name of the involved player
+  not-found: "&7Hey &e%player-name%&7, sorry but the player &c%player-involved% &cisn't &7found&7."
+
+
+command: # Command's related messages:
+  # When a player try to execute a command that isn't exist.
+  # You can use the following placeholders:
+  #   -> %player-name%    -- to show the name of the player who executed the command;
+  #   -> %command%        -- to show the name of the command performed.
+  not-found: "&7Hey &e%player-name%&7, sorry but the requested command &7(&b%command%&7) &cisn't &7found&7."
+
+  # When a player try to execute a command without all the necessary parameters.
+  # You can use the following placeholders:
+  #   -> %player-name%    -- to show the name of the player who executed the command;
+  #   -> %command%        -- to show the name of the command performed.
+  not-complete: "&7Hey &e%player-name%&7, sorry but the requested command &7(&b%command%&7) &cdoes't &7meet the expected &eparameters&7. &7&oSee the help page for more information&7."
+
+  # When the console try to perform a sub-command executable only by a player. Ex: get, give...
+  # You can use the following placeholder:
+  #   -> %command%    -- to show the name of the command performed.
+  only-player: "&7Hey &eConsole&7, sorry but the requested sub-command &7(&b%command%&7) &ccan &7be executed only by a Player."
+
+  # When an administrator set a new position for the hub (/hseek set hub).
+  # You can use the following placeholders:
+  #   -> %player-name%      -- to show the name of the player who executed the command;
+  #   -> %new-world-name%   -- to show the name of the new world;
+  #   -> %new-world-x%      -- to show the x coordinate of the new world;
+  #   -> %new-world-y%      -- to show the y coordinate of the new world;
+  #   -> %new-world-z%      -- to show the z coordinate of the new world;
+  #   -> %old-world-name%   -- to show the name of the old world;
+  #   -> %old-world-x%      -- to show the x coordinate of the old world;
+  #   -> %old-world-y%      -- to show the y coordinate of the old world;
+  #   -> %old-world-z%      -- the z coordinate of the old world;
+  hub-updated: "&7Hey &e%player-name%&7, you have &asuccessfully&7 set up the &bnew hub&7. From &c%old-world-name%&7/x:&c%old-world-x%&7/y:&c%old-world-y%&7/z:&c%old-world-z% &7to &a%new-world-name%&7/x:&a%new-world-x%&7/y:&a%new-world-y%&7/z:&a%new-world-z%&7."
+
+
+# Plugin's related errors - At 99% will never fire on the player's chat, but console/op(s).
+plugin-error:
+  failed-reload: "&eloading a %args%"
+  row-not-valid: "&7The row value provided does &cnot &7meet the &eparameters&7! Check the &e&omessages.yml &7file, at &6&ohelp.page.display&7 path."
+  no-database-detected: "&cNO database has been detected. &7Therefore the plugin will &cnot be able to keep track of player advancements. &7It is &erecommended &7to enable its use, via the \"&e&oconfig.yml&7\" file by setting \"&b&odatabase.enabled&7\" to &a&otrue&7!"
+  database-not-recognised: "&7The &6type of database &7you want to use has &cnot been recognized&7! Please check the entry \"&b&odatabase.type&7\" in the file \"&e&oconfig.yml&7\"."
+  sync-not-recognised: "&7The &6mode of syncronization &7you want to use has &cnot been recognized&7! Please check the entry \"&b&odatabase.sync.mode&7\" in the file \"&e&oconfig.yml&7\"."
+  could-not-connect-db: "&cCould not connect &7to &c%db-type% &7database. &6Report &7this &cerror &7with the code: &e&o%db-exec%&7!"
+  could-not-query-db: "&cCould not query &7the database. &6Report &7this &cerror &7with the code: &e&o%db-exec%&7, and type: &c%db-type%&7!"
+  secret-key-generated: "&7The SQLite &esecret key &c&lhas been generated&7. You can found it in the file: \"&b&osecret-key-sqlite.txt&7\"."
+  secret-key-re-generated: "&7The SQLite &esecret key &c&lhas been regenerated&7. To &6restore the previous key &7run the command &e&o&l/csr secret restore&7, a file called \"&b&osecret-key-sqlite.backup&7\" will be created, &athe restored key will be found inside it&7."
+
+
+############################################################
+# +------------------------------------------------------+ #
+# |                     Help Command                     | #
+# +------------------------------------------------------+ #
+############################################################
+
+# Manage the output of the command: /csr help
+# A list will be opened. Each page contains tot commands.
+# You can configure how many in the help.size path.
+
+help:
+  # If you want a space between each row: set the value to TRUE. Otherwise, to FALSE.
+  space-between-rows: true
+
+  # Here you decide how many row(s) each help's page will have
+  rows-per-page: 3
+
+  # The banner row allow you to see the current, max and min page
+  banner:
+    # Here you can decide where to print the banner row. The options are:
+    #   -> LAST_ROW     -- will print the banner row as the last row (of the page);
+    #   -> FIRST_ROW    -- will print the banner row as the first row (of the page);
+    #   -> BOTH_ROWS    -- will print the banner row as the first and last row (of the page).
+    position: "BOTH_ROWS"
+
+    # The banner will go to be printed at the beginning, and at the end of the page
+    # In the BANNER section you can use the placeholders:
+    #   -> %help-cur-page%    -- to display the minimum page number, of the list;
+    #   -> %help-max-page%    -- to display the maximum page number, of the list.
+    row: " &7&m&l                    &7&l< &eStarMail &oReloaded&e&lr &8Help &7(&a%help-cur-page%&7/&a%help-max-page%&7) &7&l>&m                    "
+
+  # Here you will find the section concerning the buttons to click to change the page
+  page:
+    # If you want to use the button to change the help page: set the value to TRUE. Otherwise, to FALSE.
+    enabled: true
+
+    # Here you can decide where to print the button row. The options are:
+    #   -> LAST_ROW     -- will print the button row as the last row (before the second banner, if enabled);
+    #   -> FIRST_ROW    -- will print the button row as the first row (after the first banner, if enabled).
+    display: "FIRST_ROW"
+
+    # Here you can edit the button row to your liking
+    row: "     &7&l&m-+&r %help-button-previous% &7&m--&r %help-button-next% &7&l&m+-&r    "
+
+    # In the BUTTON-NEXT and BUTTON-PREVIOUS sections,
+    # you can use the placeholders:
+    #   -> %help-prev-page%   -- to display the number of the previous page, of the list;
+    #   -> %help-cur-page%    -- to display the number of the current page, of the list;
+    #   -> %help-next-page%   -- to display the number of the next page, of the list.
+    #
+    # You can use these buttons at any position in the LIST section.
+    #   Use placeholders: %help-button-next% and %help-button-previous%.
+    button-next:
+      # The text that will be displayed as a button
+      text: "&a&lNEXT PAGE &7(%help-next-page%) &a&l>>"
+
+      # The text that will be displayed as hovered onto the button
+      hover: "&e&oLeft-Click &7to go to the &6&onext page&r"
+
+      # If you are already on the last page, hovering the mouse over the button that sends to the next page will bring up this message
+      last-page: "&cError: &7you're &6&oalready &7on the &e&olast page&7!"
+
+    button-previous:
+      # The text that will be displayed as a button
+      text: "&c&l<< &7(%help-prev-page%) &c&lPREVIOUS PAGE"
+
+      # The text that will be displayed as hovered onto the button
+      hover: "&e&oLeft-Click &7to go to the &6&oprevious page&r"
+
+      # If you are already on the first page, hovering the mouse over the button that sends to the previous page will bring up this message
+      first-page: "&cError: &7you're &6&oalready &7on the &e&ofirst page&7!"
+
+  # Here you have the ordered list of all the commands that the plugin makes available.
+  # You decide which ones to print in the help messages, in what order, under what formatting, etc...
+  # It's recommended NOT to omit any commands!
+  list:
+    - "&c-> &7&oHey! You can see the help menu here. Open the chat and &b&ohover &7&oyour mouse cursor, over a command to see more information. &b&oClick &7&othe &o\"change page\" &7buttons to scroll through the help list."
+    - "&c-> &7&oThe args put in the square brackets &6[] &7&oare &6optional&7."
+    - "&c-> &b-g &7&ois a flag to execute the command within a GUI."
+    - "&6->&r &6&o/sm help <page-number> &8- &7view the generic help menu (this)."
+    - "&6->&r &6&o/sm reload &8- &7reload the plugin."
+    - "&e->&r &6&o/sm secret regen-sql-key &8- &7regenerate the &bsecret key&7."
+    - "&c-> &ePlugin &lalias &8- &7starmail, starmailreloaded."
+
+  hovers:
+    # Here you can find all the extra information that the player will se when he hovers on the specific command.
+    commands:
+      help: "&7The &b<page-number> &7represents the page's number of the help menu."
+      reload: "&7Reload the plugin."

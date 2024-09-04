@@ -1,12 +1,12 @@
 package me.sword7.starmail.box;
 
+import me.shiry_recode.starmail.commands.ICommandSyntax;
 import me.sword7.starmail.sys.Version;
+import me.sword7.starmail.util.ILootType;
 import me.sword7.starmail.util.InfoList;
 import me.sword7.starmail.util.LocationParts;
 import me.sword7.starmail.util.MailUtil;
 import org.bukkit.ChatColor;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -17,10 +17,45 @@ import java.util.Map;
 import static me.sword7.starmail.sys.Language.LABEL_BOX_LOCATIONS;
 import static me.sword7.starmail.sys.Language.LABEL_WORLD;
 
-public class CommandBoxes implements CommandExecutor {
+public class CommandBoxes implements ICommandSyntax {
+
+    private String[] args;
+
+    public CommandBoxes(String[] args) {
+        this.args = args;
+    }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public String getName() {
+        return "boxes";
+    }
+
+    @Override
+    public String getPermission(String[] args) {
+        return "";
+    }
+
+    @Override
+    public boolean hasSubcommands() {
+        return false;
+    }
+
+    @Override
+    public int expectedArgs() {
+        return 0;
+    }
+
+    @Override
+    public int possibleErrors() {
+        return 0;
+    }
+
+    @Override
+    public void applyLoot(ILootType lootType) {
+
+    }
+
+    public void perform(CommandSender sender) {
 
         if (sender instanceof Player) {
 
@@ -39,8 +74,6 @@ public class CommandBoxes implements CommandExecutor {
             infoList.displayTo(player, page);
 
         }
-
-        return false;
     }
 
 }

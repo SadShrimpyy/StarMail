@@ -9,8 +9,8 @@ softdepend: [dynmap]
 load: POSTWORLD
 
 commands:
-  starmail:
-    description: display plugin commands
+  sm:
+    aliases: [smr, starmail, starmailreloaded]
   boxes:
     description: list all mailbox locations
   breakboxes:
