@@ -13,6 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -61,10 +62,10 @@ public class Head {
             Field profileField = skullMeta.getClass().getDeclaredField("profile");
             profileField.setAccessible(true);
             profileField.set(skullMeta, profile);
+            head.setItemMeta(skullMeta);
         } catch (IllegalArgumentException | SecurityException | NoSuchFieldException | IllegalAccessException e) {
             e.printStackTrace();
         }
-        head.setItemMeta(skullMeta);
     }
 
     public static ItemStack getSteeveHead(String name) {
