@@ -2,6 +2,7 @@ package me.sword7.starmail.post;
 
 import me.sword7.starmail.StarMail;
 import me.sword7.starmail.post.notifications.Alerts;
+import me.sword7.starmail.sys.config.PluginConfig;
 import me.sword7.starmail.user.User;
 import me.sword7.starmail.util.Cooldown;
 import org.bukkit.Bukkit;
@@ -117,7 +118,9 @@ public class PostCache implements Listener {
         if (mailList.size() > 0) {
             playerToMail.put(playerID, mailList);
         }
-        e.getPlayer().setResourcePack("https://github.com/user-attachments/files/16784216/StarMail.-.Universal.zip");
+        if (PluginConfig.isAutomaticPack()) {
+            e.getPlayer().setResourcePack("https://github.com/user-attachments/files/16784216/StarMail.-.Universal.zip");
+        }
     }
 
     @EventHandler

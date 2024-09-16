@@ -8,6 +8,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static me.sword7.starmail.StarMail.getPlugin;
+
 public class PluginConfig {
 
     private static File file = new File("plugins/StarMail", "config.yml");
@@ -52,6 +54,9 @@ public class PluginConfig {
     private static String instantSendString = "Instant Mail Send";
     private static boolean instantSend = false;
 
+    private static String automaticServerPack = "Automatic Server Resourcepack";
+    private static boolean automaticPack = true;
+
     public PluginConfig() {
         load();
     }
@@ -71,6 +76,8 @@ public class PluginConfig {
                 showCrateStraps = config.getBoolean(showCrateStrapsString, showCrateStraps);
                 sendCooldown = config.getInt(sendCooldownString, sendCooldown);
                 instantSend = config.getBoolean(instantSendString, instantSend);
+                if (!config.contains(automaticServerPack)) getPlugin().saveResource("config.yml", true);
+                automaticPack = config.getBoolean(automaticServerPack, automaticPack);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -119,5 +126,9 @@ public class PluginConfig {
 
     public static boolean isInstantSend() {
         return instantSend;
+    }
+
+    public static boolean isAutomaticPack() {
+        return automaticPack;
     }
 }
