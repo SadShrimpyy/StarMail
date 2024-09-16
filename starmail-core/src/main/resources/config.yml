@@ -12,3 +12,4 @@ Require Block Permission: false
 Show Crate Straps: true
 Default Send Cooldown (Seconds): 0
 Instant Mail Send: false
+Automatic Server Resourcepack: true
