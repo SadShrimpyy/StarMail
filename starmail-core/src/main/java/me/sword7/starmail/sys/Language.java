@@ -61,9 +61,10 @@ public enum Language {
     TEXT_WAREHOUSE_DELETE("Text - warehouse list", "list all warehouse entries"),
     TEXT_WAREHOUSE_LIST("Text - warehouse delete", "delete warehouse entry"),
     TEXT_BLACKLIST_ADD("Text - blacklist add", "add the held item to the blacklist"),
+    TEXT_BLACKLIST_HELP("Text - blacklist add", "show the blacklist help"),
+    TEXT_BLACKLIST_LIST("Text - blacklist help", "show the codes in the blacklist"),
     TEXT_BLACKLIST_REMOVE("Text - blacklist remove", "remove the held item to the blacklist"),
     TEXT_BLACKLIST_RELOAD("Text - blacklist remove", "reload the in-game configuration lists, to match the file one"),
-    TEXT_BLACKLIST_LIST("Text - blacklist list", "list all the item blacklisted"),
 
     CONST_UNKNOWN("Const - unknown", "Unknown"),
 

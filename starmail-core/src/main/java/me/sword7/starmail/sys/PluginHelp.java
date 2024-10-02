@@ -71,6 +71,7 @@ public class PluginHelp {
     }
 
     public static void sendBlacklist(CommandSender sender) {
+        sendCommand(sender, "&6/blacklist help&6: &r" + TEXT_BLACKLIST_HELP);
         sendCommand(sender, "&6/blacklist add&6: &r" + TEXT_BLACKLIST_ADD);
         sendCommand(sender, "&6/blacklist list&6: &r" + TEXT_BLACKLIST_LIST);
         sendCommand(sender, "&6/blacklist remove&6: &r" + TEXT_BLACKLIST_REMOVE);
