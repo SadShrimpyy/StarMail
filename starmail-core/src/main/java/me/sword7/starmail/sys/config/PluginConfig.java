@@ -15,6 +15,9 @@ public class PluginConfig {
     private static File file = new File("plugins/StarMail", "config.yml");
     private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
+    private static File blacklistsString = new File("plugins/StarMail", "blacklists.yml");
+    private static FileConfiguration blacklist = YamlConfiguration.loadConfiguration(file);
+
     private static String languageFileString = "Language file";
     private static String languageFile = "en";
 

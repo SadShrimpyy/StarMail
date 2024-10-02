@@ -1,5 +1,6 @@
 package me.sword7.starmail;
 
+import me.sword7.starmail.blacklist.CommandBlacklist;
 import me.sword7.starmail.box.*;
 import me.sword7.starmail.gui.InputListener;
 import me.sword7.starmail.gui.LiveSessions;
@@ -20,10 +21,7 @@ import me.sword7.starmail.postbox.PostboxLoot;
 import me.sword7.starmail.sys.Language;
 import me.sword7.starmail.sys.PluginBase;
 import me.sword7.starmail.sys.Version;
-import me.sword7.starmail.sys.config.ConfigLoader;
-import me.sword7.starmail.sys.config.IntegrationConfig;
-import me.sword7.starmail.sys.config.ItemsConfig;
-import me.sword7.starmail.sys.config.PluginConfig;
+import me.sword7.starmail.sys.config.*;
 import me.sword7.starmail.user.UserCache;
 import me.sword7.starmail.util.AutoCompleteListener;
 import me.sword7.starmail.util.CommandLoot;
@@ -46,6 +44,7 @@ public final class StarMail extends JavaPlugin {
         new PluginConfig();
         new IntegrationConfig();
         new ItemsConfig();
+        new BlacklistConfig();
         Language.load();
 
         Box.init();
@@ -80,6 +79,7 @@ public final class StarMail extends JavaPlugin {
         getCommand("globalbox").setExecutor(new CommandLoot(new GlobalLoot()));
         getCommand("starmail").setExecutor(new CommandStarMail());
         getCommand("warehouse").setExecutor(new CommandWarehouse());
+        getCommand("blacklist").setExecutor(new CommandBlacklist());
 
         new InputListener();
         new ItemListener();

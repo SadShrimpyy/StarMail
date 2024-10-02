@@ -34,6 +34,8 @@ public class Permissions {
     private static String BLOCK_GLOBALBOX = "mail.block.globalbox";
     private static String BLOCK_POSTBOX = "mail.block.postbox";
 
+    private static String BLACKLIST = "mail.blacklist";
+
     public static boolean canCraftLetter(Collection<HumanEntity> senders) {
         return canCraft(senders, CRAFT_LETTER);
     }
@@ -131,6 +133,10 @@ public class Permissions {
         return hasPermission(sender, WAREHOUSE);
     }
 
+    public static boolean canBlacklist(CommandSender sender) {
+        return sender.hasPermission(GLOBAL) || sender.hasPermission("mail.blacklist");
+    }
+
     private static boolean hasPermission(CommandSender sender, String permString) {
         return sender.hasPermission("mail.*") || sender.hasPermission(permString);
     }
@@ -152,6 +158,4 @@ public class Permissions {
         }
         return cooldown;
     }
-
-
 }

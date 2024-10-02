@@ -38,6 +38,10 @@ public class PluginHelp {
             sender.sendMessage(ChatColor.GOLD + "- - - - - - -");
             sendWarehouse(sender);
         }
+        if (Permissions.canBlacklist(sender)) {
+            sender.sendMessage(ChatColor.GOLD + "- - - - - - -");
+            sendBlacklist(sender);
+        }
 
     }
 
@@ -58,6 +62,19 @@ public class PluginHelp {
         sender.sendMessage(ChatColor.YELLOW + ChatColor.BOLD.toString() + LABEL_WAREHOUSE);
         sender.sendMessage(ChatColor.YELLOW + "-------" + ChatColor.GOLD + LABEL_COMMANDS + ChatColor.YELLOW + "-------");
         sendWarehouse(sender);
+    }
+
+    public static void sendBlacklistHelp(CommandSender sender) {
+        sender.sendMessage(ChatColor.YELLOW + ChatColor.BOLD.toString() + LABEL_BLACKLIST);
+        sender.sendMessage(ChatColor.YELLOW + "-------" + ChatColor.GOLD + LABEL_COMMANDS + ChatColor.YELLOW + "-------");
+        sendBlacklist(sender);
+    }
+
+    public static void sendBlacklist(CommandSender sender) {
+        sendCommand(sender, "&6/blacklist add&6: &r" + TEXT_BLACKLIST_ADD);
+        sendCommand(sender, "&6/blacklist list&6: &r" + TEXT_BLACKLIST_LIST);
+        sendCommand(sender, "&6/blacklist remove&6: &r" + TEXT_BLACKLIST_REMOVE);
+        sendCommand(sender, "&6/blacklist reload&6: &r" + TEXT_BLACKLIST_RELOAD);
     }
 
 }

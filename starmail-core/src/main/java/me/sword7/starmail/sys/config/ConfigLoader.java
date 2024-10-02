@@ -16,6 +16,7 @@ public class ConfigLoader {
             .add("config")
             .add("integrations")
             .add("items")
+            .add("blacklist")
             .build();
 
     private static ImmutableList<String> languages = new ImmutableList.Builder<String>()
