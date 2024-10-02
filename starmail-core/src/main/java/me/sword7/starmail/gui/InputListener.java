@@ -7,6 +7,8 @@ import me.sword7.starmail.gui.data.SealedData;
 import me.sword7.starmail.gui.data.SessionData;
 import me.sword7.starmail.gui.page.IInsertable;
 import me.sword7.starmail.gui.page.Page;
+import me.sword7.starmail.sys.Language;
+import me.sword7.starmail.sys.config.BlacklistConfig;
 import me.sword7.starmail.util.X.XClickType;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -17,6 +19,7 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
@@ -56,6 +59,11 @@ public class InputListener implements Listener {
         boolean isInsertableSlot = isInsertablePage && ((IInsertable) page.getContents()).isInsertable(slot);
         boolean isGUIClick = player.getOpenInventory().getTopInventory().equals(e.getClickedInventory());
 
+        if (clickType == ClickType.NUMBER_KEY) {
+            e.setCancelled(true);
+            return;
+        }
+
         if (clickType == ClickType.DOUBLE_CLICK) {
             e.setCancelled(true);
             if (packItemSlot != slot && wantAndCanInsert(isGUIClick, isInsertableSlot)) {
@@ -71,6 +79,10 @@ public class InputListener implements Listener {
             }
         } else if (clickType.isShiftClick()) {
             e.setCancelled(true);
+            if (isItemInBlacklist(e.getCurrentItem())) {
+                player.sendMessage(Language.WARN_ITEM_BLACKLISTED.toString());
+                return;
+            }
             if (isPackInventory(e)) return;
             if (canInsertItem(isInsertablePage, packItemSlot, slot)) {
                 Inventory top = player.getOpenInventory().getTopInventory();
@@ -84,7 +96,10 @@ public class InputListener implements Listener {
                 }
             }
         } else if (XClickType.SWAP_OFFHAND.isSupported() && clickType == XClickType.SWAP_OFFHAND.getClickType()) {
-            if (isGUIClick && !isInsertableSlot) {
+            if (isItemInBlacklist(e.getCurrentItem())) {
+                player.sendMessage(Language.WARN_ITEM_BLACKLISTED.toString());
+                e.setCancelled(true);
+            } else if (isGUIClick && !isInsertableSlot) {
                 e.setCancelled(true);
                 sessionData.fixOffHandGlitch();
             } else if (packItemSlot == slot) {
@@ -92,6 +107,10 @@ public class InputListener implements Listener {
                 sessionData.fixOffHandGlitch();
             }
         } else {
+            if (isItemInBlacklist(e.getCurrentItem())) {
+                player.sendMessage(Language.WARN_ITEM_BLACKLISTED.toString());
+                e.setCancelled(true);
+            }
             if (isGUIClick && !isInsertableSlot) {
                 e.setCancelled(true);
             }
@@ -103,6 +122,13 @@ public class InputListener implements Listener {
             int effectiveSlot = isGUIClick ? slot : -1;
             page.processClick(player, player.getOpenInventory().getTopInventory(), sessionData, effectiveSlot, e.getClick());
         }
+    }
+
+    private boolean isItemInBlacklist(ItemStack currentItem) {
+        if (currentItem == null) return false;
+        ItemStack clone = currentItem.clone();
+        clone.setAmount(1);
+        return BlacklistConfig.contains(clone.hashCode());
     }
 
     private static boolean playerHasNoSession(InventoryClickEvent e) {

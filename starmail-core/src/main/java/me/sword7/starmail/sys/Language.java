@@ -102,8 +102,9 @@ public enum Language {
     WARN_COOLING_SHORT("Warn - cooling short", "Please wait (%seconds%s)"),
     WARN_INVALID_MAIL("Warn - invalid mail", "Invalid Mail"),
     WARN_INVALID_ITEM("Warn - invalid item", "Invalid Item"),
-    WARN_ITEM_DUPLICATED_BLACKLIST("Found duplicated item to blacklist", "&eThe item you want to add is yet present in the blacklist (hash-code: %hash%). Skipping!"),
-    WARN_ITEM_UNFOUNDED_BLACKLIST("Item to blacklist not found", "&eThe item you want to remove isn't present in the blacklist (hash-code: %hash%). Skipping!"),
+    WARN_ITEM_DUPLICATED_BLACKLIST("Warn - Found duplicated item to blacklist", "&eThe item you want to add is yet present in the blacklist (hash-code: %hash%). Skipping!"),
+    WARN_ITEM_UNFOUNDED_BLACKLIST("Warn - Item to blacklist not found", "&eThe item you want to remove isn't present in the blacklist (hash-code: %hash%). Skipping!"),
+    WARN_ITEM_BLACKLISTED("Warn - Item blacklisted", "&eThe item you want to send &eis blacklisted&e, so can't be sent by mail!"),
 
     INFO_FORMAT("Info - format", "Format is %format%"),
     INFO_BOX("Info - box", "Mailbox ~ %player% ~"),
