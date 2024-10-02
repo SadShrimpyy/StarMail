@@ -1,7 +1,7 @@
 package me.sword7.starmail.sys;
 
-import me.sword7.starmail.util.storage.StorageUtil;
 import me.sword7.starmail.sys.config.PluginConfig;
+import me.sword7.starmail.util.storage.StorageUtil;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -42,6 +42,7 @@ public enum Language {
     LABEL_DISABLED("Label - disabled", "Disabled"),
     LABEL_SERVER("Label - server", "Server"),
     LABEL_WAREHOUSE("Label - warehouse", "Warehouse"),
+    LABEL_BLACKLIST("Label - blacklist", "Blacklist"),
     LABEL_WAREHOUSE_ENTRIES("Label - warehouse entries", "Warehouse Entries"),
     LABEL_ITEM("Label - item", "Item"),
     LABEL_STYLE("Label - style", "Style"),
@@ -59,6 +60,10 @@ public enum Language {
     TEXT_WAREHOUSE_EDIT("Text - warehouse edit", "edit warehouse entry"),
     TEXT_WAREHOUSE_DELETE("Text - warehouse list", "list all warehouse entries"),
     TEXT_WAREHOUSE_LIST("Text - warehouse delete", "delete warehouse entry"),
+    TEXT_BLACKLIST_ADD("Text - blacklist add", "add the held item to the blacklist"),
+    TEXT_BLACKLIST_REMOVE("Text - blacklist remove", "remove the held item to the blacklist"),
+    TEXT_BLACKLIST_RELOAD("Text - blacklist remove", "reload the in-game configuration lists, to match the file one"),
+    TEXT_BLACKLIST_LIST("Text - blacklist list", "list all the item blacklisted"),
 
     CONST_UNKNOWN("Const - unknown", "Unknown"),
 
@@ -77,6 +82,8 @@ public enum Language {
     SUCCESS_WAREHOUSE_CREATE("Success - warehouse create", "Entry added"),
     SUCCESS_WAREHOUSE_RENAME("Success - warehouse rename", "Entry renamed"),
     SUCCESS_WAREHOUSE_DELETE("Success - warehouse delete", "Entry deleted"),
+    SUCCESS_ADDED_ITEM_BLACKLIST("Added item to blacklist", "&eAdded item to blacklist with hash-code: %hash%"),
+    SUCCESS_REMOVED_ITEM_BLACKLIST("Removed item to blacklist", "&eRemoved item to blacklist with hash-code: %hash%"),
 
     WARN_NOT_PERMITTED("Warn - no permission", "You do not have permission for this command."),
     WARN_NOT_PERMITTED_BLOCK("Warn - no permission block", "You do not have permission to use this block."),
@@ -93,12 +100,18 @@ public enum Language {
     WARN_COOLING("Warn - cooling", "Please wait before sending another item. (%seconds%s)"),
     WARN_COOLING_SHORT("Warn - cooling short", "Please wait (%seconds%s)"),
     WARN_INVALID_MAIL("Warn - invalid mail", "Invalid Mail"),
+    WARN_INVALID_ITEM("Warn - invalid item", "Invalid Item"),
+    WARN_ITEM_DUPLICATED_BLACKLIST("Found duplicated item to blacklist", "&eThe item you want to add is yet present in the blacklist (hash-code: %hash%). Skipping!"),
+    WARN_ITEM_UNFOUNDED_BLACKLIST("Item to blacklist not found", "&eThe item you want to remove isn't present in the blacklist (hash-code: %hash%). Skipping!"),
 
     INFO_FORMAT("Info - format", "Format is %format%"),
     INFO_BOX("Info - box", "Mailbox ~ %player% ~"),
     INFO_MAIL("Info - mail", "&e[Mailbox] &7You have &6%amount% &7items in your mailbox."),
     INFO_RECEIVE("Info - receive", "&e[Mailbox] &7You received mail from %player%."),
     INFO_RECEIVE_MULTI("Info - receive multi", "&e[Mailbox] &7You received &6%amount% &7new items."),
+    INFO_ITEM_FOUNDED_BLACKLIST("Info - item founded in blacklist", "&e[Blacklist] &7Listing all the items founded in the Blacklist:"),
+    INFO_ITEM_FOUND_BLACKLIST("Info - specific item found in blacklist", "&e %item-count%) &6%item-hash%"),
+    INFO_BLACKLIST_RELOADED("Info - blacklist's config reloaded", "&e[Blacklist] Configuration reloaded"),
 
     CONSOLE_PLUGIN_DETECT("Console - plugin detect", "%plugin% detected"),
 
@@ -154,8 +167,8 @@ public enum Language {
     ICON_BACKSPACE("Icon - backspace", "Backspace"),
     ICON_SEND_LORE("Icon - send lore", "» Click to send mail"),
     ICON_APPLY("Icon - apply", "Apply changes"),
-
     ;
+
 
     private static File file = new File("plugins/StarMail/Locale", PluginConfig.getLanguageFile() + ".yml");
     private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
@@ -224,6 +237,16 @@ public enum Language {
 
     public String fromPlayer(String playerName) {
         return get().replaceAll("%player%", playerName);
+    }
+
+    public String fromIndexAndItem(int count, long hashCode) {
+        return get().replace("%item-count%", Integer.toString(count + 1))
+                .replace("%item-hash%", String.valueOf(hashCode));
+
+    }
+
+    public String replaceHash(long hashCode) {
+        return get().replace("%hash%", String.valueOf(hashCode));
     }
 
     public String fromAmount(int amount) {
