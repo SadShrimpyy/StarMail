@@ -19,6 +19,9 @@ commands:
     description: open virtual mailbox
   sendto:
     description: send mail to player
+  blacklist:
+    description: manage blacklist items
+    permission: mail.blacklist
   letter:
     description: give player letters
     permission: mail.loot
@@ -95,4 +98,7 @@ permissions:
     default: op
   mail.access:
     description: grants access to other's mail
+    default: op
+  mail.blacklist:
+    description: grants access to manage the blacklist
     default: op
