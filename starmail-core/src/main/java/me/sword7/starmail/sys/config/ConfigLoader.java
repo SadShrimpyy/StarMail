@@ -33,7 +33,7 @@ public class ConfigLoader {
             for (String config : configs) {
                 File target = new File("plugins/" + pluginFolder, config + ".yml");
                 if (!target.exists()) {
-                    load("config/" + config + ".yml", target);
+                    load(config + ".yml", target);
                 }
             }
             for (String lang : languages) {
