@@ -1,6 +1,6 @@
 package me.sword7.starmail.gui.data;
 
-import me.sword7.starmail.util.Particle;
+import me.sword7.starmail.compatibility.versions.PlayParticle;
 import me.sword7.starmail.gui.Icons;
 import me.sword7.starmail.gui.page.Page;
 import me.sword7.starmail.pack.Pack;
@@ -16,7 +16,7 @@ public class SealedData extends PackData {
     private UUID trackingNo;
     private boolean opened = false;
     private boolean expired;
-    private Particle particle;
+    private PlayParticle particle;
 
     public SealedData(Player player, Page home, UUID trackingNo, ItemStack[] contents, Pack pack, int slot, boolean expired) {
         super(player, home, slot, pack);

@@ -1,4 +1,4 @@
-package com.sadshiry.particle;
+package com.sadshiry;
 
 import org.bukkit.entity.Player;
 
