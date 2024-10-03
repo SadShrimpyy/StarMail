@@ -14,8 +14,9 @@
     <url>https://taplink.cc/sadshiry</url>
 
     <modules>
-        <module>spigot-legacy</module>
-        <module>spigot-modern</module>
+        <module>spigot-layer-1.21.1</module>
+        <module>spigot-layer-1_17_1-R01</module>
+        <module>spigot-layer-1_8_8-R01</module>
         <module>starmail-core</module>
         <module>common</module>
     </modules>
@@ -60,13 +61,19 @@
             </dependency>
             <dependency>
                 <groupId>com.sadshiry</groupId>
-                <artifactId>spigot-modern</artifactId>
+                <artifactId>spigot-layer-1.21.1</artifactId>
                 <version>1.0</version>
                 <scope>compile</scope>
             </dependency>
             <dependency>
                 <groupId>com.sadshiry</groupId>
-                <artifactId>spigot-legacy</artifactId>
+                <artifactId>spigot-layer-1_17_1-R01</artifactId>
+                <version>1.0</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.sadshiry</groupId>
+                <artifactId>spigot-layer-1_8_8-R01</artifactId>
                 <version>1.0</version>
                 <scope>compile</scope>
             </dependency>

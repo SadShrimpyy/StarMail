@@ -32,7 +32,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <outputDirectory>/home/mnt/devving/servers-mc/1_20_6/plugins</outputDirectory>
+                    <outputDirectory>C:\Users\aless\Desktop\dev\servers\1_21_1\plugins</outputDirectory>
                 </configuration>
             </plugin>
 
@@ -143,11 +143,15 @@
 
         <dependency>
             <groupId>com.sadshiry</groupId>
-            <artifactId>spigot-modern</artifactId>
+            <artifactId>spigot-layer-1.21.1</artifactId>
         </dependency>
         <dependency>
             <groupId>com.sadshiry</groupId>
-            <artifactId>spigot-legacy</artifactId>
+            <artifactId>spigot-layer-1_17_1-R01</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sadshiry</groupId>
+            <artifactId>spigot-layer-1_8_8-R01</artifactId>
         </dependency>
     </dependencies>
 </project>
