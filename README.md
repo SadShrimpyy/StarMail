@@ -10,7 +10,7 @@ If you encounter any kind of bug, contact the dev through Discord (sadshrimpy), 
 # Welcome
 Star Mail is a Spigot plugin that adds mailboxes, letters, and packages to Minecraft. It pays close attention to details to deliver an immersive mailing experience.
 
-Star Mail is supported by all major versions: **from 1.8 to 1.21**!
+Star Mail is supported by all major versions: **from 1.8 to 1.20.6**!
 
 # Why Star Mail?
 Star Mail offers an intuitive and complete mailing system. Players can send letters and packages to each other by using Star Mail's mailbox items. Star Mail protects against a large amount of inactive mail data by adding a configurable expiration duration for mail and package data tracking.
