@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sadshiry</groupId>
+    <artifactId>spigot-layer-1_17_1-R01</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <name>StarMail - Modern</name>
+    <description>Compatibility layer from v1.9 inclusive and next </description>
+    <url>https://taplink.cc/sadshiry</url>
+
+    <parent>
+        <groupId>me.sword7</groupId>
+        <artifactId>starmail-parent</artifactId>
+        <version>2.1.0</version>
+    </parent>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <bukkit.version>1.17.1-R0.1-SNAPSHOT</bukkit.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <release>8</release>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot</artifactId>
+            <version>${bukkit.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sadshiry</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
+    </dependencies>
+</project>
