@@ -51,12 +51,12 @@ public enum Key {
 
     private ItemStack itemStack;
 
-    Key(String profile, String texture) {
-        this.itemStack = Head.createHeadItem(texture, UUID.fromString(profile), this.toString().replace("NUM_", ""));
+    Key(String profile, String base64) {
+        this.itemStack = Head.createHeadItem(base64, UUID.fromString(profile), this.toString().replace("NUM_", ""));
     }
 
-    Key(String label, String profile, String texture) {
-        this.itemStack = Head.createHeadItem(texture, UUID.fromString(profile), label);
+    Key(String label, String profile, String base64) {
+        this.itemStack = Head.createHeadItem(base64, UUID.fromString(profile), label);
     }
 
     public ItemStack getItemStack() {
