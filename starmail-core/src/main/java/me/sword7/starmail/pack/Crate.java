@@ -1,5 +1,6 @@
 package me.sword7.starmail.pack;
 
+import me.sword7.starmail.compatibility.versions.AssignTexture;
 import me.sword7.starmail.gui.page.PageType;
 import me.sword7.starmail.sys.Language;
 import me.sword7.starmail.sys.config.PluginConfig;
@@ -125,11 +126,16 @@ public class Crate extends Pack {
     }
 
     public void addStraps(ItemStack head) {
-        if (doStraps) Head.assignTexture(head, dataSeal, displayName, profileIDSeal);
+        if (doStraps) {
+            AssignTexture.assignTexture(head, dataSeal, displayName, profileIDSeal);
+        }
+
     }
 
     public void removeStraps(ItemStack head) {
-        if (doStraps) Head.assignTexture(head, data, displayName, profileID);
+        if (doStraps) {
+            AssignTexture.assignTexture(head, data, displayName, profileID);
+        }
     }
 
     public boolean isDoStraps() {
