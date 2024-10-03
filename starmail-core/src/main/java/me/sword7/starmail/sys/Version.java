@@ -48,6 +48,10 @@ public enum Version {
         this.value = value;
     }
 
+    public boolean isMethodCreatePlayerProfileSupported() {
+        return value >= 121;
+    }
+
     public boolean isAutoCompleteSupported() {
         return value >= 109;
     }

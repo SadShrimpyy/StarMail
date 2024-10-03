@@ -1,5 +1,6 @@
 package me.sword7.starmail.gui.page;
 
+import me.sword7.starmail.compatibility.versions.AssignTexture;
 import me.sword7.starmail.gui.*;
 import me.sword7.starmail.gui.data.SessionData;
 import me.sword7.starmail.gui.data.WarehouseData;
@@ -7,7 +8,6 @@ import me.sword7.starmail.letter.Letter;
 import me.sword7.starmail.pack.Crate;
 import me.sword7.starmail.pack.Pack;
 import me.sword7.starmail.sys.Language;
-import me.sword7.starmail.util.Head;
 import me.sword7.starmail.util.X.XDye;
 import me.sword7.starmail.util.X.XMaterial;
 import me.sword7.starmail.warehouse.WarehouseCache;
@@ -23,6 +23,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.UUID;
 
 import static me.sword7.starmail.sys.Language.ICON_SCROLL_DOWN;
@@ -34,6 +35,7 @@ public class WarehouseStyle implements IPageContents {
     public Inventory populate(Inventory menu, SessionData sessionData) {
         ItemStack styleStack = XDye.YELLOW.parseItemStack();
         ItemMeta meta = styleStack.getItemMeta();
+        assert meta != null;
         meta.setDisplayName(ChatColor.WHITE.toString() + Language.LABEL_STYLE);
         styleStack.setItemMeta(meta);
         menu.setItem(4, styleStack);
@@ -44,8 +46,9 @@ public class WarehouseStyle implements IPageContents {
 
         List<ItemStack> types = new ArrayList<>();
         if (entry.getType() == WarehouseEntry.Type.LETTER) {
-            ItemStack itemStack = new ItemStack(XMaterial.WRITTEN_BOOK.parseMaterial());
+            ItemStack itemStack = new ItemStack(Objects.requireNonNull(XMaterial.WRITTEN_BOOK.parseMaterial()));
             BookMeta bookMeta = (BookMeta) itemStack.getItemMeta();
+            assert bookMeta != null;
             bookMeta.setAuthor(null);
             for (Letter letter : Letter.getAllLetters()) {
                 bookMeta.setDisplayName(ChatColor.WHITE + letter.getName());
@@ -103,8 +106,10 @@ public class WarehouseStyle implements IPageContents {
             if (entry.getType() == WarehouseEntry.Type.LETTER) {
                 if (Letter.isLetter(clickedStack)) {
                     MenuUtil.playClickSound(player);
-                    int modelData = clickedStack.getItemMeta().getCustomModelData();
+                    assert clickedStack != null;
+                    int modelData = Objects.requireNonNull(clickedStack.getItemMeta()).getCustomModelData();
                     ItemMeta meta = entryStack.getItemMeta();
+                    assert meta != null;
                     meta.setCustomModelData(modelData);
                     entryStack.setItemMeta(meta);
                     entry.setItemStack(entryStack);
@@ -117,6 +122,7 @@ public class WarehouseStyle implements IPageContents {
                     MenuUtil.playClickSound(player);
                     ItemMeta entryMeta = entryStack.getItemMeta();
                     Pack old = Pack.getPack(entryMeta);
+                    assert old != null;
                     if ((ChatColor.WHITE + old.getDisplayName()).equals(entryMeta.getDisplayName())) {
                         entryMeta.setDisplayName(ChatColor.WHITE + pack.getDisplayName());
                         entryStack.setItemMeta(entryMeta);
@@ -130,7 +136,7 @@ public class WarehouseStyle implements IPageContents {
                             profileID = crate.getProfileIDSeal();
                         }
                     }
-                    Head.assignTexture(entryStack, data, pack.getDisplayName(), profileID);
+                    AssignTexture.assignTexture(entryStack, data, pack.getDisplayName(), profileID);
                     entry.setItemStack(entryStack);
                     WarehouseCache.registerEdit(warehouseData.getType(), entry);
                     menu.setItem(8, Icons.createMail(entry.getMail()));
