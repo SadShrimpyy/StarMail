@@ -140,6 +140,11 @@
             <artifactId>jsr305</artifactId>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>25.0.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.sadshiry</groupId>
