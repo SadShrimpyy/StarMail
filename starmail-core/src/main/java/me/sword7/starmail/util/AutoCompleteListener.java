@@ -97,6 +97,9 @@ public class AutoCompleteListener implements Listener {
             } else if (buffer.contains("/warehouse ") && numberOfFullArgs(buffer) == 0) {
                 String root = "/warehouse";
                 e.setCompletions(getRefinedCompletions(root, buffer, warehouseCompletions));
+            } else if (buffer.contains("/blacklist ") && numberOfFullArgs(buffer) == 0) {
+                String root = "/blacklist";
+                e.setCompletions(getRefinedCompletions(root, buffer, blacklistCompletions));
             }
         }
     }
@@ -139,6 +142,14 @@ public class AutoCompleteListener implements Listener {
             .add("list")
             .add("delete")
             .add("help")
+            .build();
+
+    private List<String> blacklistCompletions = new ImmutableList.Builder<String>()
+            .add("help")
+            .add("add")
+            .add("list")
+            .add("remove")
+            .add("reload")
             .build();
 
     private List<String> letterCompletions = makeLetterCompletions();
