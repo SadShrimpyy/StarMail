@@ -31,10 +31,12 @@ import me.sword7.starmail.warehouse.CommandWarehouse;
 import me.sword7.starmail.warehouse.WarehouseCache;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Objects;
+
 public final class StarMail extends JavaPlugin {
 
     private static StarMail plugin;
-    private static StarMailAPI starMailAPI = StarMailAPI.getInstance();
+    private static final StarMailAPI starMailAPI = StarMailAPI.getInstance();
 
     @Override
     public void onEnable() {
@@ -62,24 +64,23 @@ public final class StarMail extends JavaPlugin {
         new PostCache();
         new WarehouseCache();
 
-        new TrackingCache();
         TrackingRunnable.start();
 
-        new LiveSessions();
         new Crafting();
 
-        getCommand("boxes").setExecutor(new CommandBoxes());
-        getCommand("breakboxes").setExecutor(new CommandBreakBoxes());
-        getCommand("mail").setExecutor(new CommandMail());
-        getCommand("sendto").setExecutor(new CommandSendTo());
-        if (Version.current.hasLetter()) getCommand("letter").setExecutor(new CommandLoot(new LetterLoot()));
-        getCommand("pack").setExecutor(new CommandLoot(new PackLoot()));
-        getCommand("box").setExecutor(new CommandLoot(new BoxLoot()));
-        getCommand("postbox").setExecutor(new CommandLoot(new PostboxLoot()));
-        getCommand("globalbox").setExecutor(new CommandLoot(new GlobalLoot()));
-        getCommand("starmail").setExecutor(new CommandStarMail());
-        getCommand("warehouse").setExecutor(new CommandWarehouse());
-        getCommand("blacklist").setExecutor(new CommandBlacklist());
+        Objects.requireNonNull(getCommand("boxes")).setExecutor(new CommandBoxes());
+        Objects.requireNonNull(getCommand("breakboxes")).setExecutor(new CommandBreakBoxes());
+        Objects.requireNonNull(getCommand("mail")).setExecutor(new CommandMail());
+        Objects.requireNonNull(getCommand("sendto")).setExecutor(new CommandSendTo());
+        Objects.requireNonNull(getCommand("pack")).setExecutor(new CommandLoot(new PackLoot()));
+        Objects.requireNonNull(getCommand("box")).setExecutor(new CommandLoot(new BoxLoot()));
+        Objects.requireNonNull(getCommand("postbox")).setExecutor(new CommandLoot(new PostboxLoot()));
+        Objects.requireNonNull(getCommand("globalbox")).setExecutor(new CommandLoot(new GlobalLoot()));
+        Objects.requireNonNull(getCommand("starmail")).setExecutor(new CommandStarMail());
+        Objects.requireNonNull(getCommand("warehouse")).setExecutor(new CommandWarehouse());
+        Objects.requireNonNull(getCommand("blacklist")).setExecutor(new CommandBlacklist());
+        if (Version.current.hasLetter())
+            Objects.requireNonNull(getCommand("letter")).setExecutor(new CommandLoot(new LetterLoot()));
 
         new InputListener();
         new ItemListener();
@@ -109,6 +110,7 @@ public final class StarMail extends JavaPlugin {
         return plugin;
     }
 
+    @SuppressWarnings("unused")
     public static StarMailAPI getStarMailAPI() {
         return starMailAPI;
     }
