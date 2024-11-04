@@ -126,7 +126,8 @@ public class MailListener implements Listener {
                 } else if (PostboxCache.hasPostbox(location)) {
                     onPostbox(e, player, Postbox.getPostbox(block.getState()));
                 }
-            } else if (Pack.isPack(e.getItem())) {
+            }
+            if (Pack.isPack(e.getItem())) {
                 onPackage(e);
             }
         } else if (sneakResult == SneakResult.USE_PACK) {
