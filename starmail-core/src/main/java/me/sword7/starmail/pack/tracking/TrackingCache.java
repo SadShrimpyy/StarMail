@@ -7,20 +7,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class TrackingCache {
+ public final class TrackingCache {
 
-    private static Map<UUID, TrackedItem> packageToContents = new HashMap<>();
-    private static Map<UUID, TrackedItem> unsavedPackages = new HashMap<>();
+    private static final Map<UUID, TrackedItem> packageToContents = new HashMap<>();
+    private static final Map<UUID, TrackedItem> unsavedPackages = new HashMap<>();
 
-    private static TrackingFlatFile trackingFlatFile = new TrackingFlatFile();
+    private static final TrackingFlatFile trackingFlatFile = new TrackingFlatFile();
 
-    public TrackingCache() {
+    static {
         packageToContents.putAll(trackingFlatFile.fetch());
     }
 
     public static void save() {
-        Map<UUID, TrackedItem> unsaved = new HashMap<>();
-        unsaved.putAll(unsavedPackages);
+        Map<UUID, TrackedItem> unsaved = new HashMap<>(unsavedPackages);
         unsavedPackages.clear();
         Scheduler.runAsync(() -> {
             trackingFlatFile.store(unsaved);

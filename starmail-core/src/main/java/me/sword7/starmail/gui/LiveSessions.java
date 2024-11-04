@@ -16,10 +16,10 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
-public class LiveSessions {
+public final class LiveSessions {
 
-    private static HashMap<UUID, SessionData> playerToData = new HashMap<>();
-    private static Map<String, String> entryToEditor = new HashMap<>();
+    private static final HashMap<UUID, SessionData> playerToData = new HashMap<>();
+    private static final Map<String, String> entryToEditor = new HashMap<>();
 
     public static void shutdown() {
         playerToData.clear();
@@ -52,7 +52,7 @@ public class LiveSessions {
         entryToEditor.put(type, player.getName());
     }
 
-    private static Set<UUID> busyPlayers = new HashSet<>();
+    private static final Set<UUID> busyPlayers = new HashSet<>();
 
     public static void launchMail(final Player player, final Box box, final Location location) {
         UUID playerID = player.getUniqueId();
