@@ -32,7 +32,7 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.3.1</version>
                 <configuration>
-                    <outputDirectory>C:\Users\aless\Desktop\dev\servers\1_21_1\plugins</outputDirectory>
+                    <outputDirectory>C:\Users\aless\Desktop\dev\servers\1_21_3\plugins</outputDirectory>
                 </configuration>
             </plugin>
 
