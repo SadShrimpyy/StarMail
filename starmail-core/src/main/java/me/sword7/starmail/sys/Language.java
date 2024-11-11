@@ -81,6 +81,8 @@ public enum Language {
     ARG_NAME("Arg - name", "name"),
     ARG_FROM("Arg - from", "from"),
     ARG_TO("Arg - to", "to"),
+    ARG_ALL_PIPES("Arg - type|name|description", "type|name|description"),
+    ARG_HASH("Arg - hash", "hash"),
 
     SUCCESS_SENT("Success - sent", "Mail sent to %player%"),
     SUCCESS_SENT_SHORT("Seccess - sent short", "Mail Sent!"),
@@ -247,14 +249,14 @@ public enum Language {
         return get().replaceAll("%player%", playerName);
     }
 
-    public String fromIndexAndItem(int count, long hashCode) {
+    public String fromIndexAndItem(int count, String exception) {
         return get().replace("%item-count%", Integer.toString(count + 1))
-                .replace("%item-hash%", String.valueOf(hashCode));
+                .replace("%item-hash%", String.valueOf(exception));
 
     }
 
-    public String replaceHash(long hashCode) {
-        return get().replace("%hash%", String.valueOf(hashCode));
+    public String replaceHash(String exception) {
+        return get().replace("%hash%", exception);
     }
 
     public String fromAmount(int amount) {
