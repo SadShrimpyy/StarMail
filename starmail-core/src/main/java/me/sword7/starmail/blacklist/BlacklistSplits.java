@@ -41,11 +41,9 @@ public class BlacklistSplits {
         for (String split : requestedSplits) {
             ItemMeta meta = clone.getItemMeta();
             MaterialData data = clone.getData();
-            if (meta == null || data == null || meta.getLore() == null || meta.getLore().isEmpty()) {
-                return null;
-            }
             switch (split) {
                 case NAME:
+                    if (meta == null) return null;
                     String name = ChatColor.stripColor(meta.getDisplayName());
                     if (isHash) {
                         sb.append(1 + ":\"");
@@ -57,6 +55,7 @@ public class BlacklistSplits {
                     sb.append("\";");
                     break;
                 case TYPE:
+                    if (data == null) return null;
                     String type = ChatColor.stripColor(String.valueOf(data.getItemType()));
                     if (isHash) {
                         sb.append(2 + ":\"");
@@ -68,6 +67,7 @@ public class BlacklistSplits {
                     sb.append("\";");
                     break;
                 case DESCRIPTION:
+                    if (meta == null || meta.getLore() == null || meta.getLore().isEmpty()) return null;
                     String lore = ChatColor.stripColor(String.valueOf(meta.getLore()));
                     if (isHash) {
                         sb.append(3 + ":\"");
