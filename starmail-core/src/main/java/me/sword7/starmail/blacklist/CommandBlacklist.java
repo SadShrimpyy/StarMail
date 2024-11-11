@@ -13,30 +13,43 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 public class CommandBlacklist implements CommandExecutor {
+
+    private Player p;
+
     @Override
-    public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
+        p = Bukkit.getServer().getPlayer(sender.getName());
         if (Permissions.canBlacklist(sender)) {
-            if (args.length > 0) {
-                String subCommand = args[0];
-                if (subCommand.equalsIgnoreCase("add")) {
-                    addNewItem(sender, args);
-                } else if (subCommand.equalsIgnoreCase("remove")) {
-                    removeItem(sender, args);
-                } else if (subCommand.equalsIgnoreCase("reload")) {
-                    BlacklistConfig.reload();
-                    sender.sendMessage(ChatColor.YELLOW + Language.INFO_BLACKLIST_RELOADED.toString());
-                } else if (subCommand.equalsIgnoreCase("list")) {
-                    listItems(sender, args);
-                } else {
-                    PluginHelp.sendBlacklistHelp(sender);
-                }
-            } else {
-                PluginHelp.sendBlacklistHelp(sender);
-            }
-        } else {
             sender.sendMessage(ChatColor.RED + Language.WARN_NOT_PERMITTED.toString());
+            return false;
+        }
+
+        if (args.length < 1) {
+            PluginHelp.sendBlacklistHelp(sender);
+            return false;
+        }
+
+        String subCommand = args[0].toLowerCase();
+        switch (subCommand) {
+            case ("add"):
+                addNewItem(sender, args);
+                break;
+            case ("remove"):
+                removeItem(sender, args);
+                break;
+            case ("reload"):
+                BlacklistConfig.reload();
+                sender.sendMessage(ChatColor.YELLOW + Language.INFO_BLACKLIST_RELOADED.toString());
+                break;
+            case ("list"):
+                listItems(sender, args);
+                break;
+            default:
+                PluginHelp.sendBlacklistHelp(sender);
+                break;
         }
 
         return false;
@@ -47,9 +60,6 @@ public class CommandBlacklist implements CommandExecutor {
             sender.sendMessage(ChatColor.RED + Language.WARN_CONSOLE_NOT_SUPPORTED.toString());
             return;
         }
-
-        final Player p = Bukkit.getServer().getPlayer(sender.getName());
-        if (p.getInventory() == null) return;
 
         final ItemStack clone = p.getInventory().getItemInMainHand().clone();
         if (clone.getType() == Material.AIR) {
@@ -78,9 +88,6 @@ public class CommandBlacklist implements CommandExecutor {
     }
 
     private void removeItem(CommandSender sender, String[] args) {
-        final Player p  = Bukkit.getServer().getPlayer(sender.getName());
-        if (p.getInventory() == null) return;
-
         final ItemStack clone = p.getInventory().getItemInMainHand().clone();
         if (clone.getType() == Material.AIR) {
             sender.sendMessage(ChatColor.RED + Language.WARN_INVALID_ITEM.toString());
