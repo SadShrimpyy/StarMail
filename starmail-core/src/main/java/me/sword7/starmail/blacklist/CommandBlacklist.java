@@ -22,7 +22,7 @@ public class CommandBlacklist implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
         p = Bukkit.getServer().getPlayer(sender.getName());
-        if (Permissions.canBlacklist(sender)) {
+        if (!Permissions.canBlacklist(sender)) {
             sender.sendMessage(ChatColor.RED + Language.WARN_NOT_PERMITTED.toString());
             return false;
         }
@@ -55,6 +55,7 @@ public class CommandBlacklist implements CommandExecutor {
         return false;
     }
 
+    @SuppressWarnings("unused")
     private void addNewItem(CommandSender sender, String[] args) {
         if (sender instanceof ConsoleCommandSender) {
             sender.sendMessage(ChatColor.RED + Language.WARN_CONSOLE_NOT_SUPPORTED.toString());
@@ -78,6 +79,7 @@ public class CommandBlacklist implements CommandExecutor {
         }
     }
 
+    @SuppressWarnings("unused")
     private void listItems(CommandSender sender, String[] args) {
         BlacklistConfig.reload();
         sender.sendMessage(ChatColor.YELLOW + Language.INFO_ITEM_FOUNDED_BLACKLIST.toString());
@@ -87,6 +89,7 @@ public class CommandBlacklist implements CommandExecutor {
         }
     }
 
+    @SuppressWarnings("unused")
     private void removeItem(CommandSender sender, String[] args) {
         final ItemStack clone = p.getInventory().getItemInMainHand().clone();
         if (clone.getType() == Material.AIR) {
