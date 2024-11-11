@@ -126,9 +126,11 @@ public class InputListener implements Listener {
 
     private boolean isItemInBlacklist(ItemStack currentItem) {
         if (currentItem == null) return false;
-        ItemStack clone = currentItem.clone();
-        clone.setAmount(1);
-        return BlacklistConfig.contains(clone.hashCode());
+//         TODO: THIS WILL BE A PAIN (take advantage of cointains() ? use a GRAPH might be the wwwwway!)
+//        ItemStack clone = currentItem.clone();
+//        clone.setAmount(1);
+//        return BlacklistConfig.contains(CLONE);
+        return true;
     }
 
     private static boolean playerHasNoSession(InventoryClickEvent e) {
