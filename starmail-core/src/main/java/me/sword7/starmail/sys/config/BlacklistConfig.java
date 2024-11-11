@@ -16,7 +16,7 @@ public class BlacklistConfig {
     private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
     private static String blacklistString = "Items Blacklisted";
-    private static List<Long> blacklist = new ArrayList<>();
+    private static List<String> blacklist = new ArrayList<>();
 
     public BlacklistConfig() {
         load();
@@ -24,7 +24,7 @@ public class BlacklistConfig {
 
     public static void reload() {
         config = YamlConfiguration.loadConfiguration(file);
-        blacklist = config.getLongList(blacklistString);
+        blacklist = config.getStringList(blacklistString);
     }
 
     public static Path getFilePath() {
@@ -34,36 +34,36 @@ public class BlacklistConfig {
     private void load() {
         if (file.exists()) {
             try {
-                blacklist = config.getLongList(blacklistString);
+                blacklist = config.getStringList(blacklistString);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public static void addHashCode(long hashCode, String itemName) {
+    public static void addExceptLine(String exception) {
         try {
             final List<String> lines = Files.readAllLines(file.toPath());
             FileWriter fw = new FileWriter(file);
             for (String l : lines) {
                 fw.append(l).append("\n");
             }
-            fw.append("  - ").append(String.valueOf(hashCode)).append(' ').append("# ").append(itemName);
+            fw.append("  - ").append(String.valueOf(exception));
             fw.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         config = YamlConfiguration.loadConfiguration(file);
-        blacklist = config.getLongList(blacklistString);
+        blacklist = config.getStringList(blacklistString);
     }
 
-    public static void removeHashCode(long hashCode) {
+    public static void removeHashCode(String exception) {
         try {
             final List<String> lines = Files.readAllLines(file.toPath());
             FileWriter fw = new FileWriter(file);
             int lineNumber = 0;
             for (int index = 0; index < lines.size(); index++) {
-                if (lines.get(index).contains(Long.toString(hashCode))) {
+                if (lines.get(index).contains(exception)) {
                     lineNumber = index;
                 }
             }
@@ -76,18 +76,18 @@ public class BlacklistConfig {
             throw new RuntimeException(e);
         }
         config = YamlConfiguration.loadConfiguration(file);
-        blacklist = config.getLongList(blacklistString);
+        blacklist = config.getStringList(blacklistString);
     }
 
-    public static Long[] getList() {
-        return blacklist.toArray(new Long[0]);
+    public static String[] getList() {
+        return blacklist.toArray(new String[0]);
     }
 
-    public static boolean contains(long hashCode) {
-        return blacklist.contains(hashCode);
+    public static boolean contains(String line) {
+        return blacklist.contains(line);
     }
 
-    public static Long getAt(int index) {
+    public static String getAt(int index) {
         return blacklist.get(index);
     }
 }
