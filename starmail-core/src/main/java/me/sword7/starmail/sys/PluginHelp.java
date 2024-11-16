@@ -7,7 +7,7 @@ import static me.sword7.starmail.sys.Language.*;
 
 public class PluginHelp {
 
-    private static boolean hasLetter = Version.current.hasLetter();
+    private static final boolean hasLetter = Version.current.hasLetter();
 
     public static void sendHelp(CommandSender sender) {
 
@@ -75,13 +75,12 @@ public class PluginHelp {
         sendCommand(sender, "&6/blacklist help&6: &r" + TEXT_BLACKLIST_HELP);
         sendCommand(sender, "&6/blacklist list&6: &r" + TEXT_BLACKLIST_LIST);
         sendCommand(sender, "&6/blacklist reload&6: &r" + TEXT_BLACKLIST_RELOAD);
-        sendCommand(sender, "&6/blacklist add name &c<hash>&6: &r" + TEXT_BLACKLIST_ADD_NAME);
-        sendCommand(sender, "&6/blacklist add type &c<hash>&6: &r" + TEXT_BLACKLIST_ADD_TYPE);
-        sendCommand(sender, "&6/blacklist add description &c<hash>&6: &r" + TEXT_BLACKLIST_ADD_DESCRIPTION);
-        sendCommand(sender, "&6/blacklist remove name &c<hash>&6: &r" + TEXT_BLACKLIST_REMOVE_NAME);
-        sendCommand(sender, "&6/blacklist remove type &c<hash>&6: &r" + TEXT_BLACKLIST_REMOVE_TYPE);
-        sendCommand(sender, "&6/blacklist remove description &c<hash>&6: &r" + TEXT_BLACKLIST_REMOVE_DESCRIPTION);
-        sendCommand(sender, "&c" + TEXT_BLACKLIST_EXPLAIN_ASTERISK);
+        sendCommand(sender, "&6/blacklist add name&6: &r" + TEXT_BLACKLIST_ADD_NAME);
+        sendCommand(sender, "&6/blacklist add type&6: &r" + TEXT_BLACKLIST_ADD_TYPE);
+        sendCommand(sender, "&6/blacklist add description&6: &r" + TEXT_BLACKLIST_ADD_DESCRIPTION);
+        sendCommand(sender, "&6/blacklist remove name&6: &r" + TEXT_BLACKLIST_REMOVE_NAME);
+        sendCommand(sender, "&6/blacklist remove type&6: &r" + TEXT_BLACKLIST_REMOVE_TYPE);
+        sendCommand(sender, "&6/blacklist remove description&6: &r" + TEXT_BLACKLIST_REMOVE_DESCRIPTION);
     }
 
 }
