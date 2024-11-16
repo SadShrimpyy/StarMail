@@ -15,13 +15,16 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static me.sword7.starmail.sys.Language.INFO_FORMAT;
 
 public class CommandBlacklist implements CommandExecutor {
 
     private Player p;
-    private String exception;;
     private BlacklistSplits splits;
+    private ItemStack clone;
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args) {
@@ -43,15 +46,20 @@ public class CommandBlacklist implements CommandExecutor {
             }
         }
 
+        args[1] = Arrays.stream(args[1].split("\\|"))
+                .sorted()
+                .collect(Collectors.joining("|"));
         String subCommand = args[0].toLowerCase();
         switch (subCommand) {
             case ("add"):
                 splits = new BlacklistSplits();
-                addNewItem(sender, args);
+                clone = p.getInventory().getItemInMainHand().clone();
+                addNewItem(sender, args, splits);
                 break;
             case ("remove"):
                 splits = new BlacklistSplits();
-                removeItem(sender, args);
+                clone = p.getInventory().getItemInMainHand().clone();
+                removeItem(sender, args, splits);
                 break;
             case ("reload"):
                 BlacklistConfig.reload();
@@ -68,37 +76,18 @@ public class CommandBlacklist implements CommandExecutor {
         return false;
     }
 
-    @SuppressWarnings("unused")
-    private void addNewItem(CommandSender sender, String[] args) {
-        if (isConsole(sender)) {
+    private void addNewItem(CommandSender sender, String[] args, BlacklistSplits splits) {
+        if (isConsole(sender) || !isRequestedItemValid(sender, args)) {
             return;
         }
-
-        splits.requestNewSplits(args[1]);
-        if (splits.isEmpty()) {
-            sendBlacklistFormat(sender, args);
-            return;
-        }
-        boolean isHash = isHash(args);
 
         final ItemStack clone = p.getInventory().getItemInMainHand().clone();
-        if (clone.getType() == Material.AIR) {
-            sender.sendMessage(ChatColor.RED + Language.WARN_INVALID_ITEM.toString());
-            return;
-        }
-
-        clone.setAmount(1);
-        BlacklistConfig.reload();
-        if ((exception = splits.getFromAnalysedLine(isHash, clone)) == null) {
-            sender.sendMessage(ChatColor.RED + Language.WARN_INVALID_ITEM.toString() + ": need valid attribute(s)!");
-            return;
-        }
-
-        if (!BlacklistConfig.contains(exception)) {
-            sender.sendMessage(ChatColor.YELLOW + Language.SUCCESS_ADDED_ITEM_BLACKLIST.replaceHash(exception));
-            BlacklistConfig.addExceptLine(exception);
+        assert clone.getItemMeta() != null;
+        if (BlacklistConfig.contains(splits.getBlacklistedItemData(clone, args[1]))) {
+            sender.sendMessage(ChatColor.YELLOW + "" + Language.WARN_ITEM_DUPLICATED_BLACKLIST);
         } else {
-            sender.sendMessage(ChatColor.YELLOW + Language.WARN_ITEM_DUPLICATED_BLACKLIST.replaceHash(exception));
+            sender.sendMessage(ChatColor.YELLOW + "" + Language.SUCCESS_ADDED_ITEM_BLACKLIST);
+            BlacklistConfig.addExceptLine(splits.getBlacklistedItemData(clone, args[1]));
         }
     }
 
@@ -113,38 +102,41 @@ public class CommandBlacklist implements CommandExecutor {
     }
 
     @SuppressWarnings("unused")
-    private void removeItem(CommandSender sender, String[] args) {
-        if (isConsole(sender)) return;
-
-        splits.requestNewSplits(args[1]);
-        if (splits.isEmpty()) {
-            sendBlacklistFormat(sender, args);
+    private void removeItem(CommandSender sender, String[] args, BlacklistSplits splits) {
+        if (isConsole(sender) || !isRequestedItemValid(sender, args)) {
             return;
         }
-        boolean isHash = isHash(args);
 
         final ItemStack clone = p.getInventory().getItemInMainHand().clone();
-        if (clone.getType() == Material.AIR) {
+        assert clone.getItemMeta() != null;
+        final String attribute = splits.getRequestedAttribute(clone, args[1]);
+        if (BlacklistConfig.contains(splits.getBlacklistedItemData(clone, args[1]))) {
+            sender.sendMessage(ChatColor.YELLOW + "" + Language.SUCCESS_REMOVED_ITEM_BLACKLIST);
+            BlacklistConfig.removeExceptLine(splits.getBlacklistedItemData(clone, args[1]));
+        } else {
+            sender.sendMessage(ChatColor.YELLOW + "" + Language.WARN_ITEM_UNFOUNDED_BLACKLIST);
+        }
+    }
+
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    private boolean isRequestedItemValid(CommandSender sender, String[] args) {
+        if (splits.isEmpty(args[1])) {
+            sendBlacklistFormat(sender, args);
+            return false;
+        }
+
+        if (p.getInventory().getItemInMainHand().getType() == Material.AIR) {
             sender.sendMessage(ChatColor.RED + Language.WARN_INVALID_ITEM.toString());
-            return;
+            return false;
         }
 
         clone.setAmount(1);
         BlacklistConfig.reload();
-        if ((exception = splits.getFromAnalysedLine(isHash, clone)) == null) {
+        if (!splits.hasValidAttributes(clone, args[1])) {
             sender.sendMessage(ChatColor.RED + Language.WARN_INVALID_ITEM.toString() + ": need valid attribute(s)!");
-            return;
+            return false;
         }
-        if (BlacklistConfig.contains(exception)) {
-            sender.sendMessage(ChatColor.YELLOW + Language.SUCCESS_REMOVED_ITEM_BLACKLIST.replaceHash(exception));
-            BlacklistConfig.removeHashCode(exception);
-        } else {
-            sender.sendMessage(ChatColor.YELLOW + Language.WARN_ITEM_UNFOUNDED_BLACKLIST.replaceHash(exception));
-        }
-    }
-
-    private static boolean isHash(String[] args) {
-        return args.length > 2 && args[2].equalsIgnoreCase("hash");
+        return true;
     }
 
     private static boolean isConsole(CommandSender sender) {
