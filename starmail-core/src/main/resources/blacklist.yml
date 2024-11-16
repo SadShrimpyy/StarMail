@@ -1,6 +1,5 @@
 # Blacklist Configuration
 Items Blacklisted:
-  - name:"Birch Chest";type:"LEGACY_SKULL_ITEM";description:"[Empty]";
-  - type:"LEGACY_STONE";
-  - 1:"2f0d90fe8744605719ce938a7c7a72ab2f677838994eec0b6219bc1f";
-  - 2:"91d34c7afc8c28b74d9e5ef62500c3686c99a165db3bed8a5d516202";
+  - type:"STONE";
+  - name:"Birch Chest";
+  - name:"Birch Chest";type:"PLAYER_HEAD";ó
