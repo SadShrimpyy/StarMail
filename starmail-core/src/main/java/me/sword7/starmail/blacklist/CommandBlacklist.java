@@ -47,6 +47,7 @@ public class CommandBlacklist implements CommandExecutor {
         }
 
         args[1] = Arrays.stream(args[1].split("\\|"))
+                .distinct()
                 .sorted()
                 .collect(Collectors.joining("|"));
         String subCommand = args[0].toLowerCase();
