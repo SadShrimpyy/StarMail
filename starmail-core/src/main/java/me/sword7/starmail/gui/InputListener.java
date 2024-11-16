@@ -1,6 +1,7 @@
 package me.sword7.starmail.gui;
 
 import me.sword7.starmail.StarMail;
+import me.sword7.starmail.blacklist.BlacklistSplits;
 import me.sword7.starmail.gui.data.IUpdateable;
 import me.sword7.starmail.gui.data.PackData;
 import me.sword7.starmail.gui.data.SealedData;
@@ -23,6 +24,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -64,6 +66,12 @@ public class InputListener implements Listener {
             return;
         }
 
+        if (isItemInBlacklist(e.getCurrentItem())) {
+            player.sendMessage(Language.WARN_ITEM_BLACKLISTED.toString());
+            e.setCancelled(true);
+            return;
+        }
+
         if (clickType == ClickType.DOUBLE_CLICK) {
             e.setCancelled(true);
             if (packItemSlot != slot && wantAndCanInsert(isGUIClick, isInsertableSlot)) {
@@ -79,10 +87,6 @@ public class InputListener implements Listener {
             }
         } else if (clickType.isShiftClick()) {
             e.setCancelled(true);
-            if (isItemInBlacklist(e.getCurrentItem())) {
-                player.sendMessage(Language.WARN_ITEM_BLACKLISTED.toString());
-                return;
-            }
             if (isPackInventory(e)) return;
             if (canInsertItem(isInsertablePage, packItemSlot, slot)) {
                 Inventory top = player.getOpenInventory().getTopInventory();
@@ -96,10 +100,7 @@ public class InputListener implements Listener {
                 }
             }
         } else if (XClickType.SWAP_OFFHAND.isSupported() && clickType == XClickType.SWAP_OFFHAND.getClickType()) {
-            if (isItemInBlacklist(e.getCurrentItem())) {
-                player.sendMessage(Language.WARN_ITEM_BLACKLISTED.toString());
-                e.setCancelled(true);
-            } else if (isGUIClick && !isInsertableSlot) {
+            if (isGUIClick && !isInsertableSlot) {
                 e.setCancelled(true);
                 sessionData.fixOffHandGlitch();
             } else if (packItemSlot == slot) {
@@ -107,10 +108,6 @@ public class InputListener implements Listener {
                 sessionData.fixOffHandGlitch();
             }
         } else {
-            if (isItemInBlacklist(e.getCurrentItem())) {
-                player.sendMessage(Language.WARN_ITEM_BLACKLISTED.toString());
-                e.setCancelled(true);
-            }
             if (isGUIClick && !isInsertableSlot) {
                 e.setCancelled(true);
             }
@@ -126,11 +123,26 @@ public class InputListener implements Listener {
 
     private boolean isItemInBlacklist(ItemStack currentItem) {
         if (currentItem == null) return false;
-//         TODO: THIS WILL BE A PAIN (take advantage of cointains() ? use a GRAPH might be the wwwwway!)
-//        ItemStack clone = currentItem.clone();
-//        clone.setAmount(1);
-//        return BlacklistConfig.contains(CLONE);
-        return true;
+
+        HashMap<String, String> clearSplits = new HashMap<>();
+        clearSplits.put("type", currentItem.getType().name());
+        if (new BlacklistSplits().checkAndJoinDescription(currentItem) != null) {
+            clearSplits.put("description", new BlacklistSplits().checkAndJoinDescription(currentItem));
+        }
+        if ((currentItem.getItemMeta() != null) && (currentItem.getItemMeta().hasDisplayName())) {
+            clearSplits.put("name", currentItem.getItemMeta().getDisplayName());
+        }
+
+        for (String line : BlacklistConfig.getList()) {
+            for (String splits : line.split(";")) {
+                String key = splits.split(":")[0];
+                String value = splits.split(":")[1].replace("\"", "");
+                if (clearSplits.containsKey(key) && clearSplits.get(key).equals(value)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private static boolean playerHasNoSession(InventoryClickEvent e) {
