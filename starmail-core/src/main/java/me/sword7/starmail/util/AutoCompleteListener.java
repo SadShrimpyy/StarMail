@@ -97,6 +97,18 @@ public class AutoCompleteListener implements Listener {
             } else if (buffer.contains("/warehouse ") && numberOfFullArgs(buffer) == 0) {
                 String root = "/warehouse";
                 e.setCompletions(getRefinedCompletions(root, buffer, warehouseCompletions));
+            } else if (buffer.contains("/blacklist add ") && numberOfFullArgs(buffer) == 1) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 1) {
+                    String root = "/blacklist add";
+                    e.setCompletions(getRefinedCompletions(root, buffer, attributesBlacklistCompletions));
+                }
+            }  else if (buffer.contains("/blacklist remove ") && numberOfFullArgs(buffer) == 1) {
+                int args = numberOfFullArgs(buffer);
+                if (args == 1) {
+                    String root = "/blacklist remove";
+                    e.setCompletions(getRefinedCompletions(root, buffer, attributesBlacklistCompletions));
+                }
             } else if (buffer.contains("/blacklist ") && numberOfFullArgs(buffer) == 0) {
                 String root = "/blacklist";
                 e.setCompletions(getRefinedCompletions(root, buffer, blacklistCompletions));
@@ -134,7 +146,7 @@ public class AutoCompleteListener implements Listener {
         return buffer.split(" ")[arg + 1];
     }
 
-    private List<String> warehouseCompletions = new ImmutableList.Builder<String>()
+    private final List<String> warehouseCompletions = new ImmutableList.Builder<String>()
             .add("send")
             .add("save")
             .add("rename")
@@ -144,7 +156,7 @@ public class AutoCompleteListener implements Listener {
             .add("help")
             .build();
 
-    private List<String> blacklistCompletions = new ImmutableList.Builder<String>()
+    private final List<String> blacklistCompletions = new ImmutableList.Builder<String>()
             .add("help")
             .add("add")
             .add("list")
@@ -152,7 +164,17 @@ public class AutoCompleteListener implements Listener {
             .add("reload")
             .build();
 
-    private List<String> letterCompletions = makeLetterCompletions();
+    private final List<String> attributesBlacklistCompletions = new ImmutableList.Builder<String>()
+            .add("name")
+            .add("type")
+            .add("description")
+            .add("name|type")
+            .add("name|description")
+            .add("type|description")
+            .add("name|type|description")
+            .build();
+
+    private final List<String> letterCompletions = makeLetterCompletions();
 
     private List<String> makeLetterCompletions() {
         List<String> completions = new ArrayList<>();
@@ -163,7 +185,7 @@ public class AutoCompleteListener implements Listener {
     }
 
 
-    private List<String> packCompletions = makePackCompletions();
+    private final List<String> packCompletions = makePackCompletions();
 
     private List<String> makePackCompletions() {
         List<String> completions = new ArrayList<>();
@@ -174,7 +196,7 @@ public class AutoCompleteListener implements Listener {
     }
 
 
-    private List<String> boxCompletions = makeBoxCompletions();
+    private final List<String> boxCompletions = makeBoxCompletions();
 
     private List<String> makeBoxCompletions() {
         List<String> completions = new ArrayList<>();
@@ -184,7 +206,7 @@ public class AutoCompleteListener implements Listener {
         return completions;
     }
 
-    private List<String> postboxCompletions = makePostboxCompletions();
+    private final List<String> postboxCompletions = makePostboxCompletions();
 
     private List<String> makePostboxCompletions() {
         List<String> completions = new ArrayList<>();
