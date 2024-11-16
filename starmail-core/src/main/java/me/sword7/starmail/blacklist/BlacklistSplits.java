@@ -3,101 +3,115 @@ package me.sword7.starmail.blacklist;
 import org.bukkit.ChatColor;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.material.MaterialData;
 import org.jetbrains.annotations.NotNull;
 
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 
 public class BlacklistSplits {
 
-    private final String NAME = "name";
-    private final String TYPE = "type";
-    private final String DESCRIPTION = "description";
-
-    private final ArrayList<String> requestedSplits = new ArrayList<>(3);
-
-    public void requestNewSplits(String arg) {
-        for (String split : arg.split("\\|")) {
-            switch (split.toLowerCase()) {
+    public String getBlacklistedItemData(@NotNull ItemStack clone, String arg1) {
+        StringBuilder sb = new StringBuilder();
+        for (String split : arg1.split("\\|")) {
+            ItemMeta meta = clone.getItemMeta();
+            switch (split) {
                 case "name":
-                    requestedSplits.add(NAME);
+                    if (meta == null || meta.getDisplayName().isEmpty()) continue;
+                    sb.append("name:\"");
+                    sb.append(ChatColor.stripColor(meta.getDisplayName()));
+                    sb.append("\";");
                     break;
                 case "type":
-                    requestedSplits.add(TYPE);
+                    sb.append("type:\"");
+                    sb.append(clone.getType().name());
+                    sb.append("\";");
                     break;
                 case "description":
-                    requestedSplits.add(DESCRIPTION);
-                    break;
-            }
-        }
-    }
-
-    @Deprecated
-    public String getFromAnalysedLine(boolean isHash, @NotNull ItemStack clone) {
-        StringBuilder sb = new StringBuilder();
-        for (String split : requestedSplits) {
-            ItemMeta meta = clone.getItemMeta();
-            MaterialData data = clone.getData();
-            switch (split) {
-                case NAME:
-                    if (meta == null) return null;
-                    String name = ChatColor.stripColor(meta.getDisplayName());
-                    if (isHash) {
-                        sb.append(1 + ":\"");
-                        sb.append(encrypt(name));
-                    } else {
-                        sb.append("name:\"");
-                        sb.append(name);
-                    }
-                    sb.append("\";");
-                    break;
-                case TYPE:
-                    if (data == null) return null;
-                    String type = ChatColor.stripColor(String.valueOf(data.getItemType()));
-                    if (isHash) {
-                        sb.append(2 + ":\"");
-                        sb.append(encrypt(type));
-                    } else {
-                        sb.append("type:\"");
-                        sb.append(type);
-                    }
-                    sb.append("\";");
-                    break;
-                case DESCRIPTION:
-                    if (meta == null || meta.getLore() == null || meta.getLore().isEmpty()) return null;
-                    String lore = ChatColor.stripColor(String.valueOf(meta.getLore()));
-                    if (isHash) {
-                        sb.append(3 + ":\"");
-                        sb.append(encrypt(lore));
-                    } else {
-                        sb.append("description:\"");
-                        sb.append(lore);
-                    }
-                    sb.append("\";");
+                    if (meta == null || meta.getLore() == null || meta.getLore().isEmpty()) continue;
+                    sb.append("description:\"");
+                    sb.append(joinDescription(clone));
                     break;
             }
         }
         return sb.toString();
     }
 
-    public boolean isEmpty() {
+    public boolean hasValidAttributes(ItemStack clone, String arg1) {
+        for (String split : arg1.split("\\|")) {
+            ItemMeta meta = clone.getItemMeta();
+            switch (split) {
+                case "type":
+                    break;
+                case "name":
+                    if (meta == null || meta.getDisplayName().isEmpty()) {
+                        return false;
+                    }
+                    break;
+                case "description":
+                    if (meta == null || meta.getLore() == null || meta.getLore().isEmpty()) {
+                        return false;
+                    }
+                    break;
+            }
+        }
+        return true;
+    }
+
+    public @NotNull String getRequestedAttribute(ItemStack clone, String arg1) {
+        assert clone.getData() != null;
+        assert clone.getItemMeta() != null;
+        assert clone.getItemMeta().getLore() != null;
+        for (String split : arg1.split("\\|")) {
+            switch (split.toLowerCase()) {
+                case "name":
+                    return clone.getItemMeta().getDisplayName();
+                case "type":
+                    return String.valueOf(clone.getData().getItemType());
+                case "description":
+                    return joinDescription(clone);
+                default:
+                    throw new RuntimeException("Requested Attribute INVALID: Please contact the developer.");
+            }
+        }
+        throw new RuntimeException("Requested Attribute INVALID: Please contact the developer.");
+    }
+
+    public boolean isEmpty(String arg1) {
+        ArrayList<String> requestedSplits = new ArrayList<>(3);
+        for (String split : arg1.split("\\|")) {
+            switch (split.toLowerCase()) {
+                case "name":
+                    requestedSplits.add("name");
+                    break;
+                case "type":
+                    requestedSplits.add("type");
+                    break;
+                case "description":
+                    requestedSplits.add("description");
+                    break;
+            }
+        }
         return requestedSplits.isEmpty();
     }
 
-    private String encrypt(String digest) {
-        try {
-            byte[] messageDigest = MessageDigest.getInstance("SHA-224").digest(digest.getBytes());
-            StringBuilder hexDigest = new StringBuilder(new BigInteger(1, messageDigest).toString(16));
-            while (hexDigest.length() < 32) {
-                hexDigest.insert(0, "0");
-            }
-            return hexDigest.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
+    private @NotNull String joinDescription(ItemStack clone) {
+        assert clone.getItemMeta() != null;
+        assert clone.getItemMeta().getLore() != null;
+        return String.join("-", clone.getItemMeta().getLore()
+                        .stream().map(ChatColor::stripColor)
+                        .toArray(String[]::new))
+                .replace(":", "")
+                .replace(";", "")
+                .replace("\"", "");
+    }
+
+    public String checkAndJoinDescription(ItemStack clone) {
+        if ((clone.getItemMeta() == null) || (clone.getItemMeta().getLore() == null)) return null;
+        return String.join("-", clone.getItemMeta().getLore()
+                        .stream().map(ChatColor::stripColor)
+                        .toArray(String[]::new))
+                .replace(":", "")
+                .replace(";", "")
+                .replace("\"", "");
     }
 
 }
