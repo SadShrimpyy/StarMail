@@ -32,7 +32,7 @@ public enum Language {
     LABEL_DYED_GIFT("Label - dyed gift", "%color% Gift"),
     LABEL_FROM("Label - from", "From"),
     LABEL_WORLD("Label - world", "World"),
-    LABEL_BOX_LOCATIONS("Label - box locations", "Mailbox Locaitons"),
+    LABEL_BOX_LOCATIONS("Label - box locations", "Mailbox Locations"),
     LABEL_TRACKING_NO("Label - tracking number", "TrackingNo"),
     LABEL_POSTBOX_TYPES("Label - postbox types", "Postbox Types"),
     LABEL_BOX_TYPES("Label - box types", "Box Types"),
@@ -85,14 +85,14 @@ public enum Language {
     ARG_HASH("Arg - hash", "hash"),
 
     SUCCESS_SENT("Success - sent", "Mail sent to %player%"),
-    SUCCESS_SENT_SHORT("Seccess - sent short", "Mail Sent!"),
+    SUCCESS_SENT_SHORT("Success - sent short", "Mail Sent!"),
     SUCCESS_GIFT("Success - gift", "%amount% items sent to %player%"),
     SUCCESS_BREAK("Success - break", "Mailboxes broken"),
     SUCCESS_WAREHOUSE_CREATE("Success - warehouse create", "Entry added"),
     SUCCESS_WAREHOUSE_RENAME("Success - warehouse rename", "Entry renamed"),
     SUCCESS_WAREHOUSE_DELETE("Success - warehouse delete", "Entry deleted"),
-    SUCCESS_ADDED_ITEM_BLACKLIST("Added item to blacklist", "&eAdded item to blacklist with hash-code: %hash%"),
-    SUCCESS_REMOVED_ITEM_BLACKLIST("Removed item to blacklist", "&eRemoved item to blacklist with hash-code: %hash%"),
+    SUCCESS_ADDED_ITEM_BLACKLIST("Added item to blacklist", "&eAdded item to blacklist"),
+    SUCCESS_REMOVED_ITEM_BLACKLIST("Removed item to blacklist", "&eRemoved item to blacklist"),
 
     WARN_NOT_PERMITTED("Warn - no permission", "You do not have permission for this command."),
     WARN_NOT_PERMITTED_BLOCK("Warn - no permission block", "You do not have permission to use this block."),
@@ -110,8 +110,8 @@ public enum Language {
     WARN_COOLING_SHORT("Warn - cooling short", "Please wait (%seconds%s)"),
     WARN_INVALID_MAIL("Warn - invalid mail", "Invalid Mail"),
     WARN_INVALID_ITEM("Warn - invalid item", "Invalid Item"),
-    WARN_ITEM_DUPLICATED_BLACKLIST("Warn - Found duplicated item to blacklist", "&eThe item you want to add is yet present in the blacklist (hash-code: %hash%). Skipping!"),
-    WARN_ITEM_UNFOUNDED_BLACKLIST("Warn - Item to blacklist not found", "&eThe item you want to remove isn't present in the blacklist (hash-code: %hash%). Skipping!"),
+    WARN_ITEM_DUPLICATED_BLACKLIST("Warn - Found duplicated item to blacklist", "&eThe item you want to add is yet present in the blacklist. Skipping!"),
+    WARN_ITEM_UNFOUNDED_BLACKLIST("Warn - Item to blacklist not found", "&eThe item you want to remove isn't present in the blacklist. Skipping!"),
     WARN_ITEM_BLACKLISTED("Warn - Item blacklisted", "&eThe item you want to send &eis blacklisted&e, so can't be sent by mail!"),
 
     INFO_FORMAT("Info - format", "Format is %format%"),
@@ -180,9 +180,10 @@ public enum Language {
     ;
 
 
-    private static File file = new File("plugins/StarMail/Locale", PluginConfig.getLanguageFile() + ".yml");
-    private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+    private static final File file = new File("plugins/StarMail/Locale", PluginConfig.getLanguageFile() + ".yml");
+    private static final FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
+    @SuppressWarnings("CallToPrintStackTrace")
     public static void load() {
         if (file.exists()) {
             try {
@@ -201,9 +202,9 @@ public enum Language {
         }
     }
 
-    public class MessageSetting {
+    public static class MessageSetting {
 
-        private String label;
+        private final String label;
         private String message;
 
         public MessageSetting(String label, String message) {
@@ -226,7 +227,7 @@ public enum Language {
     }
 
 
-    private MessageSetting messageSetting;
+    private final MessageSetting messageSetting;
 
     Language(String messageSetting, String messageDefault) {
         this.messageSetting = new MessageSetting(messageSetting, messageDefault);
@@ -249,14 +250,10 @@ public enum Language {
         return get().replaceAll("%player%", playerName);
     }
 
+    @SuppressWarnings("unused")
     public String fromIndexAndItem(int count, String exception) {
-        return get().replace("%item-count%", Integer.toString(count + 1))
-                .replace("%item-hash%", String.valueOf(exception));
+        return get().replace("%item-count%", Integer.toString(count + 1));
 
-    }
-
-    public String replaceHash(String exception) {
-        return get().replace("%hash%", exception);
     }
 
     public String fromAmount(int amount) {
