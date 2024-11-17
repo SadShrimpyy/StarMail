@@ -13,3 +13,5 @@ Show Crate Straps: true
 Default Send Cooldown (Seconds): 0
 Instant Mail Send: false
 Automatic Server Resourcepack: true
+# Leave BLANK or "" to use the default one (if Automatic Server Resourcepack is true)
+Custom Server Resourcepack: ""
