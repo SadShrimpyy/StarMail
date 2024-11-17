@@ -21,11 +21,11 @@ import java.util.UUID;
 
 public class PostCache implements Listener {
 
-    private static Map<UUID, Cooldown> playerToCooldown = new HashMap<>();
-    private static Map<UUID, List<Mail>> playerToMail = new HashMap<>();
-    private static Map<UUID, List<Mail>> unsavedMail = new HashMap<>();
+    private static final Map<UUID, Cooldown> playerToCooldown = new HashMap<>();
+    private static final Map<UUID, List<Mail>> playerToMail = new HashMap<>();
+    private static final Map<UUID, List<Mail>> unsavedMail = new HashMap<>();
 
-    private static PostFlatFile postFlatFile = new PostFlatFile();
+    private static final PostFlatFile postFlatFile = new PostFlatFile();
 
     public PostCache() {
         Plugin plugin = StarMail.getPlugin();
@@ -37,15 +37,12 @@ public class PostCache implements Listener {
         for (Player player : Bukkit.getOnlinePlayers()) {
             UUID playerID = player.getUniqueId();
             List<Mail> mailList = postFlatFile.fetch(playerID);
-            if (mailList.size() > 0) playerToMail.put(playerID, mailList);
+            if (!mailList.isEmpty()) playerToMail.put(playerID, mailList);
         }
     }
 
     public static void shutdown() {
-        for (Map.Entry<UUID, List<Mail>> entry : unsavedMail.entrySet()) {
-            postFlatFile.store(entry.getKey(), entry.getValue());
-        }
-        unsavedMail.clear();
+        save();
         playerToMail.clear();
     }
 
@@ -83,9 +80,7 @@ public class PostCache implements Listener {
     public static void send(User sender, UUID targetID, ItemStack itemStack, int coolDuration) {
         UUID senderID = sender.getID();
         if (coolDuration > 0) {
-            Cooldown cooldown = new Cooldown(() -> {
-                playerToCooldown.remove(senderID);
-            }, coolDuration);
+            Cooldown cooldown = new Cooldown(() -> playerToCooldown.remove(senderID), coolDuration);
             playerToCooldown.put(senderID, cooldown);
         }
         send(targetID, new Mail(itemStack, sender.getName()));
@@ -115,11 +110,15 @@ public class PostCache implements Listener {
     public void onJoin(PlayerJoinEvent e) {
         UUID playerID = e.getPlayer().getUniqueId();
         List<Mail> mailList = postFlatFile.fetch(playerID);
-        if (mailList.size() > 0) {
+        if (!mailList.isEmpty()) {
             playerToMail.put(playerID, mailList);
         }
         if (PluginConfig.isAutomaticPack()) {
-            e.getPlayer().setResourcePack("https://github.com/user-attachments/files/16784216/StarMail.-.Universal.zip");
+            @SuppressWarnings("StringEqualsEmptyString")
+            String link = ((PluginConfig.getServerPack().equals("")) || (PluginConfig.getServerPack().isEmpty()))
+                    ? "https://github.com/user-attachments/files/16784216/StarMail.-.Universal.zip"
+                    : PluginConfig.getServerPack();
+            e.getPlayer().setResourcePack(link);
         }
     }
 
