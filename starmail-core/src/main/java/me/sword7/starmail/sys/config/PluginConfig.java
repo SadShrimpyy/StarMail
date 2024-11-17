@@ -60,6 +60,9 @@ public class PluginConfig {
     private static final String automaticServerPack = "Automatic Server Resourcepack";
     private static boolean automaticPack = true;
 
+    private static final String customServerServerPack = "Custom Server Resourcepack";
+    private static String serverPack = "";
+
     public PluginConfig() {
         load();
     }
@@ -97,6 +100,8 @@ public class PluginConfig {
                 instantSend = config.getBoolean(instantSendString, instantSend);
                 if (!config.contains(automaticServerPack)) getPlugin().saveResource("config.yml", true);
                 automaticPack = config.getBoolean(automaticServerPack, automaticPack);
+                if (!config.contains(customServerServerPack)) getPlugin().saveResource("config.yml", true);
+                serverPack = config.getString(customServerServerPack, serverPack);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -150,4 +155,9 @@ public class PluginConfig {
     public static boolean isAutomaticPack() {
         return automaticPack;
     }
+
+    public static String getServerPack() {
+        return serverPack;
+    }
+
 }
