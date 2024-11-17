@@ -12,28 +12,28 @@ import static me.sword7.starmail.StarMail.getPlugin;
 
 public class PluginConfig {
 
-    private static File file = new File("plugins/StarMail", "config.yml");
-    private static FileConfiguration config = YamlConfiguration.loadConfiguration(file);
+    private static final File file = new File("plugins/StarMail", "config.yml");
+    private static final FileConfiguration config = YamlConfiguration.loadConfiguration(file);
 
     private static File blacklistsString = new File("plugins/StarMail", "blacklists.yml");
     private static FileConfiguration blacklist = YamlConfiguration.loadConfiguration(file);
 
-    private static String languageFileString = "Language file";
+    private static final String languageFileString = "Language file";
     private static String languageFile = "en";
 
-    private static String maxMailBoxesString = "Default Max Mailbox";
+    private static final String maxMailBoxesString = "Default Max Mailbox";
     private static int maxMailBoxes = 1;
 
-    private static String mailExpirationString = "Mail Expiration Days";
+    private static final String mailExpirationString = "Mail Expiration Days";
     private static int mailExpiration = 30;
 
-    private static String packageExpirationString = "Package Expiration Days";
+    private static final String packageExpirationString = "Package Expiration Days";
     private static int packageExpiration = 30;
 
-    private static String inactiveUserExpirationString = "Inactive User Expiration Days";
+    private static final String inactiveUserExpirationString = "Inactive User Expiration Days";
     private static int inactiveUserExpiration = 45;
 
-    private static String blacklistWorldsString = "Mailbox World Blacklist";
+    private static final String blacklistWorldsString = "Mailbox World Blacklist";
     private static List<String> blacklistWorlds = buildBlacklistWorld();
 
     private static List<String> buildBlacklistWorld() {
@@ -42,26 +42,42 @@ public class PluginConfig {
         return blacklistWorlds;
     }
 
-    private static String onJoinDelayTicksString = "on Join Notification Delay (Ticks)";
+    private static final String onJoinDelayTicksString = "on Join Notification Delay (Ticks)";
     private static int onJoinDelayTicks = 3;
 
-    private static String requireBlockPermissionString = "Require Block Permission";
+    private static final String requireBlockPermissionString = "Require Block Permission";
     private static boolean requireBlockPermission = false;
 
-    private static String showCrateStrapsString = "Show Crate Straps";
+    private static final String showCrateStrapsString = "Show Crate Straps";
     private static boolean showCrateStraps = true;
 
-    private static String sendCooldownString = "Default Send Cooldown (Seconds)";
+    private static final String sendCooldownString = "Default Send Cooldown (Seconds)";
     private static int sendCooldown = 0;
 
-    private static String instantSendString = "Instant Mail Send";
+    private static final String instantSendString = "Instant Mail Send";
     private static boolean instantSend = false;
 
-    private static String automaticServerPack = "Automatic Server Resourcepack";
+    private static final String automaticServerPack = "Automatic Server Resourcepack";
     private static boolean automaticPack = true;
 
     public PluginConfig() {
         load();
+    }
+
+    public static File getBlacklistsString() {
+        return blacklistsString;
+    }
+
+    public static void setBlacklistsString(File blacklistsString) {
+        PluginConfig.blacklistsString = blacklistsString;
+    }
+
+    public static FileConfiguration getBlacklist() {
+        return blacklist;
+    }
+
+    public static void setBlacklist(FileConfiguration blacklist) {
+        PluginConfig.blacklist = blacklist;
     }
 
     private void load() {
