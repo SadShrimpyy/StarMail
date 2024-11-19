@@ -1,7 +1,6 @@
 name: StarMail
 version: 2.0
 main: me.sword7.starmail.StarMail
-api-version: 1.17.1
 authors: [ sword7, SadShiry ]
 description: A mailing system for Minecraft - Maintained version
 website: https://taplink.cc/sadshiry
