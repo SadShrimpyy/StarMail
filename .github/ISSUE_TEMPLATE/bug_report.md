@@ -2,12 +2,18 @@
 name: Bug report
 about: Create a report to help us improve
 title: Add a placeholder for issue title, ex. [BUG]
-labels: ''
+labels: 'bug'
 assignees: SadShrimpyy
 
 ---
 
+**Please make sure to complete the form.**Otherwise I fin myself in difficulty to know the context which's the errors were thrown.
+
+_The form takes 5m to you. It saves me effort to in tracing back all the details that you know._
+
 *please make sure you are using the latest StarMail version before submitting an issue, you might also find a dev build fixing this issue already on GitHub*
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
 **Describe the bug**
 A clear and concise description of what the bug is. Here some context:
