@@ -30,9 +30,9 @@ import java.util.Collection;
 
 public class Crafting implements Listener {
 
-    private ItemStack AIR = new ItemStack(Material.AIR);
-    private Version version = Version.current;
-    private boolean letterSupported = version.hasLetter();
+    private final ItemStack AIR = new ItemStack(Material.AIR);
+    private final Version version = Version.current;
+    private final boolean letterSupported = version.hasLetter();
 
     public Crafting() {
         Plugin plugin = StarMail.getPlugin();
@@ -56,52 +56,53 @@ public class Crafting implements Listener {
 
     @EventHandler(ignoreCancelled = true)
     public void onCraftPrep(PrepareItemCraftEvent e) {
-        if (e.getRecipe() != null && e.getRecipe().getResult() != null) {
-            ItemStack result = e.getRecipe().getResult();
+        if (e.getRecipe() == null) {
+            return;
+        }
 
-            //gift and boxes have same recipe(player head + dye), so I have to convert the result for gifts
-            ItemStack conversion = convertGiftResult(e.getInventory(), result);
-            if (conversion != null) {
-                result = conversion;
-                e.getInventory().setResult(result);
+        ItemStack result = e.getRecipe().getResult();
+        //gift and boxes have same recipe(player head + dye), so I have to convert the result for gifts
+        ItemStack conversion = convertGiftResult(e.getInventory(), result);
+        if (conversion != null) {
+            result = conversion;
+            e.getInventory().setResult(result);
+        }
+
+        Collection<HumanEntity> viewers = e.getViewers();
+        if (letterSupported && Letter.isLetter(result)) {
+            if (!Permissions.canCraftLetter(viewers)) {
+                e.getInventory().setResult(AIR);
+            } else {
+                if (containsBook(e.getInventory().getMatrix())) {
+                    e.getInventory().setResult(AIR);
+                }
             }
-
-            Collection<HumanEntity> viewers = e.getViewers();
-            if (letterSupported && Letter.isLetter(result)) {
-                if (!Permissions.canCraftLetter(viewers)) {
+        } else if (Pack.isPack(result)) {
+            Pack pack = Pack.getPack(result);
+            if (pack instanceof Crate) {
+                if (!Permissions.canCraftCrate(viewers)) e.getInventory().setResult(AIR);
+            } else if (pack instanceof Chest) {
+                if (!Permissions.canCraftChest(viewers)) e.getInventory().setResult(AIR);
+            } else if (pack instanceof Gift) {
+                if (!Permissions.canCraftGift(viewers)) {
                     e.getInventory().setResult(AIR);
                 } else {
-                    if (containsBook(e.getInventory().getMatrix())) {
-                        e.getInventory().setResult(AIR);
-                    }
-                }
-            } else if (Pack.isPack(result)) {
-                Pack pack = Pack.getPack(result);
-                if (pack instanceof Crate) {
-                    if (!Permissions.canCraftCrate(viewers)) e.getInventory().setResult(AIR);
-                } else if (pack instanceof Chest) {
-                    if (!Permissions.canCraftChest(viewers)) e.getInventory().setResult(AIR);
-                } else if (pack instanceof Gift) {
-                    if (!Permissions.canCraftGift(viewers)) {
-                        e.getInventory().setResult(AIR);
-                    } else {
-                        if (Pack.getPack(result.getItemMeta()).getType() != PackType.ACACIA_CHEST.DEFAULT_GIFT) {
-                            if (!containsGift(e.getInventory().getMatrix())) {
-                                e.getInventory().setResult(AIR);
-                            }
-                        }
-                    }
-                } else {
-                    e.getInventory().setResult(AIR);
-                }
-            } else if (Box.isBox(result)) {
-                if (!Permissions.canCraftBox(viewers)) {
-                    e.getInventory().setResult(AIR);
-                } else {
-                    if (Box.getBox(result.getItemMeta()).getType() != BoxType.DEFAULT) {
-                        if (!containsBox(e.getInventory().getMatrix())) {
+                    if (Pack.getPack(result.getItemMeta()).getType() != PackType.ACACIA_CHEST.DEFAULT_GIFT) {
+                        if (!containsGift(e.getInventory().getMatrix())) {
                             e.getInventory().setResult(AIR);
                         }
+                    }
+                }
+            } else {
+                e.getInventory().setResult(AIR);
+            }
+        } else if (Box.isBox(result)) {
+            if (!Permissions.canCraftBox(viewers)) {
+                e.getInventory().setResult(AIR);
+            } else {
+                if (Box.getBox(result.getItemMeta()).getType() != BoxType.DEFAULT) {
+                    if (!containsBox(e.getInventory().getMatrix())) {
+                        e.getInventory().setResult(AIR);
                     }
                 }
             }
@@ -110,14 +111,14 @@ public class Crafting implements Listener {
 
     private ItemStack convertGiftResult(CraftingInventory inventory, ItemStack result) {
         Box box = Box.getBox(result);
-        if (box != null) {
-            if (containsGift(inventory.getMatrix())) {
-                XDye xDye = box.getXDye();
-                for (PackType packType : PackType.craftableGifts) {
-                    if (((Gift) packType.getPack()).getXDye() == xDye) {
-                        return packType.getPack().getEmptyPack();
-                    }
-                }
+        if ((box == null) || (!containsGift(inventory.getMatrix()))) {
+            return null;
+        }
+
+        XDye xDye = box.getXDye();
+        for (PackType packType : PackType.craftableGifts) {
+            if (((Gift) packType.getPack()).getXDye() == xDye) {
+                return packType.getPack().getEmptyPack();
             }
         }
         return null;
@@ -172,8 +173,11 @@ public class Crafting implements Listener {
 
         for (BoxType boxType : BoxType.craftable) {
             Box box = boxType.getBox();
-            ShapelessRecipe dyedBox = version.hasNamespaceKey() ? new ShapelessRecipe(new NamespacedKey(plugin, box.getName() + "_BOX"), box.getItemStack()) : new ShapelessRecipe(box.getItemStack());
             XDye xDye = box.getXDye();
+            if ((xDye.parseMaterial() == null) || (XMaterial.PLAYER_HEAD.parseMaterial() == null)) {
+                continue;
+            }
+            ShapelessRecipe dyedBox = version.hasNamespaceKey() ? new ShapelessRecipe(new NamespacedKey(plugin, box.getName() + "_BOX"), box.getItemStack()) : new ShapelessRecipe(box.getItemStack());
             if (version.hasExtendedEnums()) {
                 dyedBox.addIngredient(xDye.parseMaterial());
                 dyedBox.addIngredient(XMaterial.PLAYER_HEAD.parseMaterial());
@@ -191,11 +195,15 @@ public class Crafting implements Listener {
             letterRecipe.addIngredient(Material.FEATHER);
             plugin.getServer().addRecipe(letterRecipe);
 
-
             for (LetterType letterType : LetterType.craftable) {
                 Letter letter = letterType.getLetter();
-                ShapelessRecipe dyedBox = version.hasNamespaceKey() ? new ShapelessRecipe(new NamespacedKey(plugin, letter.getName() + "_LETTER"), letter.getLetterAndQuill()) : new ShapelessRecipe(letter.getLetterAndQuill());
                 XDye xDye = letter.getXDye();
+                if ((xDye.parseMaterial() == null) || (XMaterial.WRITABLE_BOOK.parseMaterial() == null)) {
+                    continue;
+                }
+                ShapelessRecipe dyedBox = version.hasNamespaceKey() ?
+                        new ShapelessRecipe(new NamespacedKey(plugin, letter.getName() + "_LETTER"), letter.getLetterAndQuill()) :
+                        new ShapelessRecipe(letter.getLetterAndQuill());
                 dyedBox.addIngredient(xDye.parseMaterial());
                 dyedBox.addIngredient(XMaterial.WRITABLE_BOOK.parseMaterial());
                 plugin.getServer().addRecipe(dyedBox);
@@ -207,7 +215,12 @@ public class Crafting implements Listener {
             XPlanks planks = crate.getXPlanks();
             if (planks.isSupported()) {
                 for (XWool wool : XWool.values()) {
-                    ShapedRecipe packRecipe = version.hasNamespaceKey() ? new ShapedRecipe(new NamespacedKey(plugin, crate.getName() + "_CRATE_" + wool.toString()), crate.getEmptyPack()) : new ShapedRecipe(crate.getEmptyPack());
+                    if ((wool.parseMaterial() == null) || (planks.parseMaterial() == null)) {
+                        continue;
+                    }
+                    ShapedRecipe packRecipe = version.hasNamespaceKey()
+                            ? new ShapedRecipe(new NamespacedKey(plugin, crate.getName() + "_CRATE_" + wool), crate.getEmptyPack())
+                            : new ShapedRecipe(crate.getEmptyPack());
                     packRecipe.shape("www", "w*w", "www");
                     if (version.hasExtendedEnums()) {
                         packRecipe.setIngredient('w', planks.parseMaterial());
@@ -221,13 +234,17 @@ public class Crafting implements Listener {
             }
         }
 
-
         for (PackType packType : PackType.craftableChests) {
             Chest chest = (Chest) packType.getPack();
             XPlanks planks = chest.getXPlanks();
             if (planks.isSupported()) {
                 for (XWool wool : XWool.values()) {
-                    ShapedRecipe packRecipe = version.hasNamespaceKey() ? new ShapedRecipe(new NamespacedKey(plugin, chest.getName() + "_CHEST_" + wool.toString()), chest.getEmptyPack()) : new ShapedRecipe(chest.getEmptyPack());
+                    if ((wool.parseMaterial() == null) && (planks.parseMaterial() == null)) {
+                        continue;
+                    }
+                    ShapedRecipe packRecipe = version.hasNamespaceKey()
+                            ? new ShapedRecipe(new NamespacedKey(plugin, chest.getName() + "_CHEST_" + wool.toString()), chest.getEmptyPack())
+                            : new ShapedRecipe(chest.getEmptyPack());
                     packRecipe.shape("---", "w*w", "www");
                     if (version.hasExtendedEnums()) {
                         packRecipe.setIngredient('-', planks.parseSlabMaterial());
@@ -246,7 +263,12 @@ public class Crafting implements Listener {
         final ItemStack defaultGiftItemStack = PackType.DEFAULT_GIFT.getPack().getEmptyPack();
 
         for (XWool wool : XWool.values()) {
-            ShapedRecipe defaultGift = version.hasNamespaceKey() ? new ShapedRecipe(new NamespacedKey(plugin, "DEFAULT_GIFT_" + wool.toString()), defaultGiftItemStack) : new ShapedRecipe(defaultGiftItemStack);
+            if (wool.parseMaterial() == null) {
+                continue;
+            }
+            ShapedRecipe defaultGift = version.hasNamespaceKey()
+                    ? new ShapedRecipe(new NamespacedKey(plugin, "DEFAULT_GIFT_" + wool.toString()), defaultGiftItemStack)
+                    : new ShapedRecipe(defaultGiftItemStack);
             defaultGift.shape("---", "-*-", "---");
             defaultGift.setIngredient('-', XMaterial.PAPER.parseMaterial());
             if (version.hasExtendedEnums()) {
@@ -256,9 +278,6 @@ public class Crafting implements Listener {
             }
             plugin.getServer().addRecipe(defaultGift);
         }
-
-
     }
-
 
 }
