@@ -1,3 +1,7 @@
+[![Discord Badge](https://img.shields.io/badge/Our-Community-%237289DA?style=flat&logo=discord&logoColor=%237289DA&color=%237289DA)](https://discord.gg/AKEKKSe7)
+[![SpigotMC Badge](https://img.shields.io/badge/Release-v2.3.2--Rev1-E57E16?style=flat&logo=spigotmc&logoColor=E57E16)](https://www.spigotmc.org/resources/starmail-reloaded.119106/)
+[![buymeacoffee](https://img.shields.io/badge/Support-Me_❤-FF0000?style=flat&logo=buymeacoffee&logoColor=ffffff)](https://buymeacoffee.com/alessionicf)
+
 # Maintained version (supports 1.8 to 1.21.3)
 The original version of the plugin, therefore the source code, can be found [here](https://gitlab.com/sword7/starmail).
 The first commit (15867618) of this repo, contain all and only the source code from the [original repo](https://gitlab.com/sword7/starmail) with project id: 15867618 by the commit id: 18a686f29152649fc0afa0577b4e20b11e002fcf.
@@ -5,7 +9,7 @@ The first commit (15867618) of this repo, contain all and only the source code f
 *This is simply a version where the *original StarMail plugin* **(no longer maintained)**, created by **sword7**, is retained.*
 
 ## Support
-If you encounter any kind of bug, contact the dev through Discord (sadshrimpy), or  create a [GitHub Issue](https://github.com/SadShrimpyy/StarMail/issues).
+If you encounter any kind of bug, contact the dev through Discord (sadshrimpy), create a [GitHub Issue](https://github.com/SadShrimpyy/StarMail/issues) or Join our [Discord](https://discord.gg/AKEKKSe7)! Our Discord is more than just a place for support—it's a community filled with people who share the same passion! Hope to see you there! 😊
 
 # Welcome
 Star Mail is a Spigot plugin that adds mailboxes, letters, and packages to Minecraft. It pays close attention to details to deliver an immersive mailing experience.
