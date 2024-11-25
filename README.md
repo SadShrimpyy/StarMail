@@ -5,7 +5,7 @@ The first commit (15867618) of this repo, contain all and only the source code f
 *This is simply a version where the *original StarMail plugin* **(no longer maintained)**, created by **sword7**, is retained.*
 
 ## Support
-If you encounter any kind of bug, contact the dev through Discord (sadshrimpy), or  create a [GitHub Issue](https://github.com/SadShrimpyy/StarMail/issues).
+If you encounter any kind of bug, contact the dev through Discord (sadshrimpy), create a [GitHub Issue](https://github.com/SadShrimpyy/StarMail/issues) or Join our [Discord](https://discord.gg/AKEKKSe7)! Our Discord is more than just a place for support—it's a community filled with people who share the same passion! Hope to see you there! 😊
 
 # Welcome
 Star Mail is a Spigot plugin that adds mailboxes, letters, and packages to Minecraft. It pays close attention to details to deliver an immersive mailing experience.
