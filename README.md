@@ -1,5 +1,5 @@
 [![Discord Badge](https://img.shields.io/badge/Our-Community-%237289DA?style=flat&logo=discord&logoColor=%237289DA&color=%237289DA)](https://discord.gg/AKEKKSe7)
-[![SpigotMC Badge](https://img.shields.io/badge/Release-v2.3.2--Rev1-E57E16?style=flat&logo=spigotmc&logoColor=E57E16)](https://www.spigotmc.org/resources/starmail-reloaded.119106/)
+[![SpigotMC Badge](https://img.shields.io/badge/Release-v2.3.2--Rev2-E57E16?style=flat&logo=spigotmc&logoColor=E57E16)](https://www.spigotmc.org/resources/starmail-reloaded.119106/)
 [![buymeacoffee](https://img.shields.io/badge/Support-Me_❤-FF0000?style=flat&logo=buymeacoffee&logoColor=ffffff)](https://buymeacoffee.com/alessionicf)
 
 # Maintained version (supports 1.8 to 1.21.3)
