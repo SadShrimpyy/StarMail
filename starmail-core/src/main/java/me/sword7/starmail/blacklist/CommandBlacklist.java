@@ -46,10 +46,13 @@ public class CommandBlacklist implements CommandExecutor {
             }
         }
 
-        args[1] = Arrays.stream(args[1].split("\\|"))
-                .distinct()
-                .sorted()
-                .collect(Collectors.joining("|"));
+        if (args.length > 1) {
+            args[1] = Arrays.stream(args[1].split("\\|"))
+                    .distinct()
+                    .sorted()
+                    .collect(Collectors.joining("|"));
+        }
+
         String subCommand = args[0].toLowerCase();
         switch (subCommand) {
             case ("add"):
@@ -98,7 +101,7 @@ public class CommandBlacklist implements CommandExecutor {
         sender.sendMessage(ChatColor.YELLOW + Language.INFO_ITEM_FOUNDED_BLACKLIST.toString());
         for (int count = 0; count < BlacklistConfig.getList().length; count++) {
             sender.sendMessage(ChatColor.GRAY + Language.INFO_ITEM_FOUND_BLACKLIST.fromIndexAndItem(
-                    count, BlacklistConfig.getAt(count)));
+                    count, BlacklistConfig.getAt(count)).replace("%item-hash%", BlacklistConfig.getAt(count)));
         }
     }
 
