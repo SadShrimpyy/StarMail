@@ -1,4 +1,4 @@
-[![Discord Badge](https://img.shields.io/badge/Our-Community-%237289DA?style=flat&logo=discord&logoColor=%237289DA&color=%237289DA)](https://discord.gg/ruwYxBSGY6)
+[![Discord Badge](https://img.shields.io/badge/Our-Community-%237289DA?style=flat&logo=discord&logoColor=%237289DA&color=%237289DA)](https://discord.gg/JbPaBZdXre)
 [![SpigotMC Badge](https://img.shields.io/badge/Release-v2.3.4-E57E16?style=flat&logo=spigotmc&logoColor=E57E16)](https://www.spigotmc.org/resources/starmail-reloaded.119106/)
 [![buymeacoffee](https://img.shields.io/badge/Support-Me_❤-FF0000?style=flat&logo=buymeacoffee&logoColor=ffffff)](https://buymeacoffee.com/alessionicf)
 
