@@ -2,6 +2,22 @@
 [![SpigotMC Badge](https://img.shields.io/badge/Release-v2.3.4-E57E16?style=flat&logo=spigotmc&logoColor=E57E16)](https://www.spigotmc.org/resources/starmail-reloaded.119106/)
 [![buymeacoffee](https://img.shields.io/badge/Support-Me_❤-FF0000?style=flat&logo=buymeacoffee&logoColor=ffffff)](https://buymeacoffee.com/alessionicf)
 
+---
+
+## Notice: Repository Migration
+
+**All my active development has moved to [git.alemonta.dev](https://git.alemonta.dev)** — my self-hosted Gitea instance.
+
+Repositories on GitHub are now archived and will no longer receive updates.
+
+You can find this project @ [git.alemonta.dev/alemontamd5/starmail-reloaded.git](https://git.alemonta.dev/alemontamd5/starmail-reloaded.git)
+
+You can find current and continued projects at:
+
+➡️ [https://git.alemonta.dev/alemontamd5](https://git.alemonta.dev/alemontamd5)
+
+---
+
 # Maintained version (supports 1.8 to 1.21.3)
 The original version of the plugin, therefore the source code, can be found [here](https://gitlab.com/sword7/starmail).
 The first commit (15867618) of this repo, contain all and only the source code from the [original repo](https://gitlab.com/sword7/starmail) with project id: 15867618 by the commit id: 18a686f29152649fc0afa0577b4e20b11e002fcf.
